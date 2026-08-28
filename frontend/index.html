@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carbon Universe 碳宇</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <style>
+    :root { --green:#2E7D32; --green-light:#81C784; --bg:#f4f9f4; --card:#fff; --line:#e2f0e2; --text:#1b3a1e; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
+    header { background:linear-gradient(90deg,#2E7D32,#43A047); color:#fff; padding:16px 24px; display:flex; align-items:center; gap:12px; box-shadow:0 2px 8px rgba(46,125,50,.25); }
+    header h1 { font-size:18px; margin:0; }
+    nav { display:flex; gap:8px; padding:12px 24px; background:#e8f5e9; flex-wrap:wrap; position:sticky; top:0; z-index:10; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+    nav button { border:none; background:#fff; color:var(--text); padding:8px 18px; border-radius:20px; cursor:pointer; font-size:14px; transition:.15s; }
+    nav button:hover { background:var(--green-light); color:#fff; }
+    nav button.active { background:var(--green); color:#fff; }
+    main { padding:20px 24px; max-width:1120px; margin:0 auto; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px 20px; margin-bottom:16px; box-shadow:0 2px 10px rgba(46,125,50,.06); }
+    .global-err { background:#fdecea; color:#c0392b; border:1px solid #f5c6cb; border-radius:8px; padding:12px 16px; margin-bottom:16px; font-size:14px; }
+    .hero h2 { font-size:22px; }
+    .overview { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:16px; }
+    @media(max-width:720px){ .overview { grid-template-columns:1fr; } }
+    .stat { background:linear-gradient(135deg,#2E7D32,#66BB6A); color:#fff; border-radius:8px; padding:22px; cursor:pointer; box-shadow:0 3px 12px rgba(46,125,50,.2); transition:.15s; }
+    .stat:hover { transform:translateY(-2px); }
+    .stat .num { font-size:30px; font-weight:700; }
+    .stat .lbl { font-size:15px; margin-top:4px; }
+    .stat .sub { font-size:12px; opacity:.85; margin-top:6px; }
+    .modules { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    @media(max-width:720px){ .modules { grid-template-columns:1fr; } }
+    .mod { border:1px solid var(--line); border-radius:8px; padding:14px 16px; cursor:pointer; display:flex; flex-direction:column; gap:4px; transition:.15s; }
+    .mod:hover { border-color:var(--green); background:#f4f9f4; }
+    .mod b { font-size:15px; } .mod span { font-size:12px; color:#4b7a5a; }
+    h2 { font-size:16px; margin:0 0 10px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th,td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); }
+    .muted { color:#4b7a5a; font-size:12px; }
+    .tag { display:inline-block; padding:2px 8px; border-radius:10px; background:#dcfce7; font-size:12px; }
+    .empty { color:#9ca3af; padding:20px; text-align:center; }
+    .subtabs { display:flex; gap:8px; margin:10px 0; }
+    .subtabs button { border:1px solid var(--green); background:#fff; color:var(--green); padding:6px 14px; border-radius:8px; cursor:pointer; }
+    .subtabs button.on { background:var(--green); color:#fff; }
+    .row { display:flex; gap:8px; margin-bottom:8px; align-items:center; }
+    .row select, .row input { padding:7px 8px; border:1px solid var(--line); border-radius:8px; font-size:14px; }
+    .row input[type=number] { width:90px; }
+    textarea { width:100%; padding:8px; border:1px solid var(--line); border-radius:8px; font-size:14px; box-sizing:border-box; }
+    button.primary { background:var(--green); color:#fff; border:none; padding:9px 20px; border-radius:8px; cursor:pointer; font-size:14px; }
+    button.primary:disabled { opacity:.6; cursor:not-allowed; }
+    button.mini { background:#fff; border:1px solid var(--line); color:var(--text); padding:5px 10px; border-radius:8px; cursor:pointer; font-size:13px; }
+    .result { border-color:var(--green); }
+    .total { font-size:15px; } .total b { color:var(--green); font-size:20px; }
+    .tips { margin:6px 0 0; padding-left:18px; } .tips li { font-size:13px; color:#4b7a5a; margin-bottom:4px; }
+    .err { color:#dc2626; font-size:13px; }
+    .ok { color:var(--green); font-size:13px; }
+    .balance { display:flex; gap:24px; flex-wrap:wrap; font-size:14px; margin-top:6px; }
+    .balance .g { color:var(--green); font-size:17px; }
+    .ex-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:14px; }
+    @media(max-width:640px){ .ex-grid { grid-template-columns:1fr; } }
+    .row label { width:40px; font-size:13px; }
+    tr.ask td:first-child { color:#dc2626; } tr.bid td:first-child { color:var(--green); }
+    tr.spread td { text-align:center; color:#9ca3af; font-size:12px; background:#f0fdf4; }
+    .g { color:var(--green); } .r { color:#dc2626; }
+    .behaviors { display:flex; gap:10px; flex-wrap:wrap; }
+    .beh { border:1px solid var(--green); background:#fff; color:var(--text); padding:10px 16px; border-radius:10px; cursor:pointer; font-size:14px; }
+    .beh:hover { background:#f0fdf4; } .beh:disabled { opacity:.6; cursor:not-allowed; }
+    .beh .plus { color:var(--green); font-weight:bold; margin-left:4px; }
+    @media print {
+      header, nav, .no-print { display:none !important; }
+      body { background:#fff; }
+      .card { border:1px solid #ccc; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>🌍 Carbon Universe 碳宇</h1>
+    <span class="muted" style="color:#dcfce7">碳核算 · 交易所 · 碳普惠 · 导出</span>
+  </header>
+
+  <nav>
+    <button v-for="t in tabs" :key="t.key"
+            :class="{active: tab===t.key}" @click="go(t.key)">{{ t.label }}</button>
+  </nav>
+
+  <main>
+    <!-- 全局错误提示 -->
+    <div class="global-err" v-if="globalErr">⚠ {{ globalErr }}</div>
+
+    <!-- 首页：项目介绍 + 数据概览 -->
+    <section v-if="tab==='home'">
+      <div class="card hero">
+        <h2>🌍 Carbon Universe · 碳宇</h2>
+        <p class="muted">一站式虚拟碳中和平台，覆盖「AI 碳核算 → 碳资产交易 → 碳普惠激励 → 凭证台账」完整闭环，助力个人与组织量化并管理碳足迹。</p>
+      </div>
+
+      <div class="overview" v-if="overview">
+        <div class="stat" @click="go('carbon')">
+          <div class="num">{{ overview.total_calc }}</div>
+          <div class="lbl">总核算次数</div>
+          <div class="sub">累计排放 {{ overview.total_emission }} kg</div>
+        </div>
+        <div class="stat" @click="go('exchange')">
+          <div class="num">¥{{ overview.total_trade_volume }}</div>
+          <div class="lbl">总交易量</div>
+          <div class="sub">成交 {{ overview.total_trade_count }} 笔</div>
+        </div>
+        <div class="stat" @click="go('points')">
+          <div class="num">{{ overview.total_points }}</div>
+          <div class="lbl">总积分</div>
+          <div class="sub">碳普惠激励累计</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>功能模块</h2>
+        <div class="modules">
+          <div class="mod" @click="go('carbon')"><b>🤖 AI 碳核算</b><span>表单/自然语言智能估算</span></div>
+          <div class="mod" @click="go('exchange')"><b>💹 碳资产交易所</b><span>挂单、吃单成交闭环</span></div>
+          <div class="mod" @click="go('points')"><b>🎁 碳普惠激励</b><span>打卡得分、积分抵扣</span></div>
+          <div class="mod" @click="go('export')"><b>📄 凭证台账导出</b><span>汇总打印为 PDF</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI 智能碳足迹核算 -->
+    <section v-if="tab==='carbon'">
+      <div class="card">
+        <h2>🤖 AI 智能碳足迹核算</h2>
+        <p class="muted">支持结构化表单或自然语言描述，AI 自动估算碳排放并给出减碳建议。</p>
+        <div class="subtabs">
+          <button :class="{on: calcMode==='form'}" @click="calcMode='form'">表单输入</button>
+          <button :class="{on: calcMode==='nl'}" @click="calcMode='nl'">自然语言输入</button>
+        </div>
+
+        <!-- 表单模式 -->
+        <div v-if="calcMode==='form'">
+          <div class="row" v-for="(f,idx) in form" :key="idx">
+            <select v-model="f.activity_type">
+              <option v-for="t in activityTypes" :key="t" :value="t">{{ t }}</option>
+            </select>
+            <input type="number" v-model.number="f.amount" placeholder="数量" min="0" />
+            <input type="text" v-model="f.unit" :placeholder="unitHint(f.activity_type)" />
+            <button class="mini" @click="removeRow(idx)" v-if="form.length>1">✕</button>
+          </div>
+          <button class="mini" @click="addRow">＋ 添加一项</button>
+          <div style="margin-top:10px">
+            <button class="primary" :disabled="busy" @click="submitForm">
+              {{ busy ? '核算中…' : 'AI 核算' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- 自然语言模式 -->
+        <div v-if="calcMode==='nl'">
+          <textarea v-model="nlText" rows="3"
+            placeholder="例如：我今天开车上班20公里，办公室空调开了8小时"></textarea>
+          <div style="margin-top:10px">
+            <button class="primary" :disabled="busy" @click="submitNl">
+              {{ busy ? '核算中…' : 'AI 核算' }}
+            </button>
+          </div>
+        </div>
+        <p class="err" v-if="calcErr">⚠ {{ calcErr }}</p>
+      </div>
+
+      <!-- 核算结果卡片 -->
+      <div class="card result" v-if="result">
+        <h2>核算结果 <span class="tag">{{ result.source==='nl' ? '自然语言' : '表单' }}</span></h2>
+        <p class="total">总排放：<b>{{ result.total_emission }}</b> kgCO2e</p>
+        <table>
+          <tr><th>类别</th><th>活动</th><th>活动量</th><th>因子</th><th>排放(kg)</th></tr>
+          <tr v-for="(i,idx) in result.items" :key="idx">
+            <td>{{ i.category }}</td><td>{{ i.activity }}</td>
+            <td>{{ i.amount }} {{ i.unit }}</td><td>{{ i.factor }}</td><td>{{ i.emission }}</td>
+          </tr>
+        </table>
+        <p class="muted">🤖 {{ result.ai_summary }}</p>
+        <div v-if="result.suggestions && result.suggestions.length">
+          <p class="muted"><b>减碳建议：</b></p>
+          <ul class="tips"><li v-for="(s,i) in result.suggestions" :key="i">{{ s }}</li></ul>
+        </div>
+      </div>
+
+      <!-- 历史报告 -->
+      <div class="card">
+        <h2>历史报告</h2>
+        <table>
+          <tr><th>标题</th><th>周期</th><th>总排放(kg)</th><th>来源</th><th>时间</th></tr>
+          <tr v-for="r in reports" :key="r.id">
+            <td>{{ r.title }}</td><td>{{ r.period }}</td>
+            <td>{{ r.total_emission }}</td>
+            <td>{{ r.source==='nl' ? '自然语言' : '表单' }}</td>
+            <td>{{ (r.created_at||'').slice(0,19) }}</td>
+          </tr>
+        </table>
+        <div class="empty" v-if="!reports.length">暂无报告</div>
+      </div>
+    </section>
+
+    <!-- 虚拟碳资产交易所 -->
+    <section v-if="tab==='exchange'">
+      <!-- 资产余额 -->
+      <div class="card">
+        <h2>💹 虚拟碳资产交易所</h2>
+        <div class="balance" v-if="balance">
+          <div>当前用户：<b>{{ balance.name }}</b></div>
+          <div>碳信用：<b class="g">{{ balance.carbon_balance }}</b> 单位</div>
+          <div>法币：<b class="g">¥{{ balance.cash_balance }}</b></div>
+        </div>
+      </div>
+
+      <div class="ex-grid">
+        <!-- 左：挂单表单 -->
+        <div class="card">
+          <h2>挂单</h2>
+          <div class="subtabs">
+            <button :class="{on: orderType==='buy'}" @click="orderType='buy'">买入</button>
+            <button :class="{on: orderType==='sell'}" @click="orderType='sell'">卖出</button>
+          </div>
+          <div class="row"><label>数量</label>
+            <input type="number" v-model.number="orderForm.amount" min="0" placeholder="碳信用数量" /></div>
+          <div class="row"><label>单价</label>
+            <input type="number" v-model.number="orderForm.price" min="0" placeholder="元/单位" /></div>
+          <p class="muted">预计金额：¥{{ (orderForm.amount*orderForm.price || 0).toFixed(2) }}</p>
+          <button class="primary" :disabled="busy" @click="placeOrder">
+            {{ orderType==='buy' ? '挂买单' : '挂卖单' }}
+          </button>
+          <p class="err" v-if="exErr">⚠ {{ exErr }}</p>
+          <p class="ok" v-if="exMsg">✔ {{ exMsg }}</p>
+        </div>
+
+        <!-- 中：订单簿 -->
+        <div class="card">
+          <h2>订单簿 <span class="muted">（点对手方订单吃单成交）</span></h2>
+          <table>
+            <tr><th>方向</th><th>单价</th><th>数量</th><th>操作</th></tr>
+            <tr v-for="o in book.asks" :key="o.id" class="ask">
+              <td>卖</td><td>{{ o.price }}</td><td>{{ o.quantity }}</td>
+              <td><button class="mini" v-if="o.user_id!==myId" @click="takeOrder(o)">买入</button>
+                  <span v-else class="muted">我的</span></td>
+            </tr>
+            <tr class="spread"><td colspan="4">—— 买卖盘 ——</td></tr>
+            <tr v-for="o in book.bids" :key="o.id" class="bid">
+              <td>买</td><td>{{ o.price }}</td><td>{{ o.quantity }}</td>
+              <td><button class="mini" v-if="o.user_id!==myId" @click="takeOrder(o)">卖出</button>
+                  <span v-else class="muted">我的</span></td>
+            </tr>
+          </table>
+          <div class="empty" v-if="!book.asks.length && !book.bids.length">订单簿为空</div>
+        </div>
+      </div>
+
+      <!-- 底：成交历史 -->
+      <div class="card">
+        <h2>成交历史</h2>
+        <table>
+          <tr><th>价格</th><th>数量</th><th>金额</th><th>时间</th></tr>
+          <tr v-for="t in trades" :key="t.id">
+            <td>{{ t.price }}</td><td>{{ t.quantity }}</td>
+            <td>¥{{ (t.price*t.quantity).toFixed(2) }}</td>
+            <td>{{ (t.created_at||'').slice(0,19) }}</td>
+          </tr>
+        </table>
+        <div class="empty" v-if="!trades.length">暂无成交</div>
+      </div>
+    </section>
+
+    <!-- 碳普惠激励系统 -->
+    <section v-if="tab==='points'">
+      <div class="card">
+        <h2>🎁 碳普惠激励系统</h2>
+        <p class="total" v-if="ptBalance">积分余额：<b>{{ ptBalance.points_balance }}</b> 分
+          <span class="muted">（{{ ptBalance.name }}）</span></p>
+      </div>
+
+      <div class="card">
+        <h2>打卡减碳行为</h2>
+        <div class="behaviors">
+          <button v-for="b in behaviors" :key="b.key" class="beh"
+                  :disabled="busy" @click="checkin(b)">
+            {{ b.label }} <span class="plus">+{{ b.points }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>积分抵扣</h2>
+        <div class="row">
+          <input type="number" v-model.number="redeemAmount" min="1" placeholder="抵扣积分数量" />
+          <button class="primary" :disabled="busy" @click="redeem">兑换抵扣</button>
+        </div>
+        <p class="err" v-if="ptErr">⚠ {{ ptErr }}</p>
+        <p class="ok" v-if="ptMsg">✔ {{ ptMsg }}</p>
+      </div>
+
+      <div class="card">
+        <h2>积分变动记录</h2>
+        <table>
+          <tr><th>说明</th><th>积分</th><th>时间</th></tr>
+          <tr v-for="p in points" :key="p.id">
+            <td>{{ p.description }}</td>
+            <td :class="p.points>0 ? 'g' : 'r'">{{ p.points>0 ? '+' : '' }}{{ p.points }}</td>
+            <td>{{ (p.created_at||'').slice(0,19) }}</td>
+          </tr>
+        </table>
+        <div class="empty" v-if="!points.length">暂无积分记录</div>
+      </div>
+    </section>
+
+    <!-- 凭证台账导出 -->
+    <section v-if="tab==='export'">
+      <div class="card no-print">
+        <h2>📄 凭证台账导出</h2>
+        <p class="muted">汇总当前用户的核算报告、交易记录与积分，可打印为 PDF。</p>
+        <button class="primary" @click="printPage">🖨 导出 PDF（打印）</button>
+      </div>
+
+      <div v-if="summary" id="print-area">
+        <div class="card">
+          <h2>用户信息</h2>
+          <div class="balance">
+            <div>姓名：<b>{{ summary.user.name }}</b></div>
+            <div>碳信用：<b class="g">{{ summary.user.carbon_balance }}</b></div>
+            <div>法币：<b class="g">¥{{ summary.user.cash_balance }}</b></div>
+            <div>积分：<b class="g">{{ summary.user.points_balance }}</b></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>碳核算汇总</h2>
+          <p class="muted">报告数：{{ summary.carbon.report_count }}　累计核算排放：{{ summary.carbon.total_emission }} kgCO2e</p>
+          <table>
+            <tr><th>标题</th><th>周期</th><th>总排放(kg)</th><th>时间</th></tr>
+            <tr v-for="r in summary.carbon.reports" :key="r.id">
+              <td>{{ r.title }}</td><td>{{ r.period }}</td>
+              <td>{{ r.total_emission }}</td><td>{{ (r.created_at||'').slice(0,19) }}</td>
+            </tr>
+          </table>
+          <div class="empty" v-if="!summary.carbon.reports.length">无报告</div>
+        </div>
+
+        <div class="card">
+          <h2>交易记录汇总</h2>
+          <p class="muted">成交笔数：{{ summary.trade.trade_count }}　成交总额：¥{{ summary.trade.trade_volume }}</p>
+          <table>
+            <tr><th>价格</th><th>数量</th><th>金额</th><th>时间</th></tr>
+            <tr v-for="t in summary.trade.trades" :key="t.id">
+              <td>{{ t.price }}</td><td>{{ t.quantity }}</td>
+              <td>¥{{ (t.price*t.quantity).toFixed(2) }}</td>
+              <td>{{ (t.created_at||'').slice(0,19) }}</td>
+            </tr>
+          </table>
+          <div class="empty" v-if="!summary.trade.trades.length">无成交</div>
+        </div>
+
+        <div class="card">
+          <h2>积分汇总</h2>
+          <p class="muted">当前余额：{{ summary.points.balance }}　累计获得：{{ summary.points.earned }}　累计抵扣：{{ summary.points.redeemed }}</p>
+          <table>
+            <tr><th>说明</th><th>积分</th><th>时间</th></tr>
+            <tr v-for="p in summary.points.records" :key="p.id">
+              <td>{{ p.description }}</td><td>{{ p.points }}</td>
+              <td>{{ (p.created_at||'').slice(0,19) }}</td>
+            </tr>
+          </table>
+          <div class="empty" v-if="!summary.points.records.length">无积分记录</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const { createApp } = Vue;
+createApp({
+  data() {
+    return {
+      api: "http://localhost:8000",
+      tab: "home",
+      globalErr: "",
+      overview: null,
+      tabs: [
+        { key:"home", label:"首页" },
+        { key:"carbon", label:"碳核算" },
+        { key:"exchange", label:"交易所" },
+        { key:"points", label:"碳普惠" },
+        { key:"export", label:"导出" },
+      ],
+      reports: [], book:{asks:[],bids:[]}, trades:[], points:[],
+      // AI 碳核算模块状态
+      calcMode: "form",
+      activityTypes: ["用电", "出行", "餐饮", "办公"],
+      units: { "用电":"度", "出行":"km", "餐饮":"餐", "办公":"小时" },
+      form: [{ activity_type:"出行", amount:null, unit:"" }],
+      nlText: "",
+      result: null, busy: false, calcErr: "",
+      // 交易所状态
+      balance: null, myId: null,
+      orderType: "sell",
+      orderForm: { amount: null, price: null },
+      exErr: "", exMsg: "",
+      // 碳普惠 / 导出状态
+      ptBalance: null, behaviors: [], redeemAmount: null,
+      ptErr: "", ptMsg: "",
+      summary: null,
+    };
+  },
+  methods: {
+    go(k) { this.tab = k; this.load(); },
+    async get(path) {
+      try {
+        const r = await fetch(this.api + path);
+        const data = await r.json();
+        if (!r.ok) { this.globalErr = data.error || data.detail || "请求失败"; return null; }
+        return data;
+      } catch(e) {
+        this.globalErr = "无法连接后端服务，请确认已启动 (http://localhost:8000)";
+        console.error(e); return null;
+      }
+    },
+    async post(path, body) {
+      let r;
+      try {
+        r = await fetch(this.api + path, {
+          method:"POST", headers:{"Content-Type":"application/json"},
+          body: JSON.stringify(body),
+        });
+      } catch(e) {
+        throw new Error("无法连接后端服务，请确认已启动 (http://localhost:8000)");
+      }
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || data.detail || "请求失败");
+      return data;
+    },
+    unitHint(t) { return "单位，默认 " + (this.units[t] || ""); },
+    addRow() { this.form.push({ activity_type:"用电", amount:null, unit:"" }); },
+    removeRow(i) { this.form.splice(i, 1); },
+    async submitForm() {
+      const items = this.form
+        .filter(f => f.amount > 0)
+        .map(f => ({ activity_type:f.activity_type, amount:f.amount, unit:f.unit || null }));
+      if (!items.length) { this.calcErr = "请至少填写一项有效数量"; return; }
+      await this.runCalc({ mode:"form", items });
+    },
+    async submitNl() {
+      if (!this.nlText.trim()) { this.calcErr = "请输入描述文字"; return; }
+      await this.runCalc({ mode:"nl", text:this.nlText });
+    },
+    async runCalc(payload) {
+      this.busy = true; this.calcErr = "";
+      try {
+        this.result = await this.post("/api/carbon/calculate", payload);
+        this.reports = await this.get("/api/carbon/reports") || [];
+      } catch (e) {
+        this.calcErr = e.message; this.result = null;
+      } finally { this.busy = false; }
+    },
+    // ---- 交易所 ----
+    async loadExchange() {
+      this.balance = await this.get("/api/exchange/balance");
+      this.myId = this.balance ? this.balance.user_id : null;
+      this.book = await this.get("/api/exchange/orders") || {asks:[],bids:[]};
+      this.trades = await this.get("/api/exchange/trades") || [];
+    },
+    async placeOrder() {
+      this.exErr = ""; this.exMsg = "";
+      const { amount, price } = this.orderForm;
+      if (!(amount > 0) || !(price > 0)) { this.exErr = "数量与单价必须大于 0"; return; }
+      this.busy = true;
+      try {
+        await this.post("/api/exchange/orders", { type:this.orderType, amount, price });
+        this.exMsg = (this.orderType==='buy'?'买':'卖') + "单已挂出";
+        this.orderForm = { amount:null, price:null };
+        await this.loadExchange();
+      } catch (e) { this.exErr = e.message; }
+      finally { this.busy = false; }
+    },
+    async takeOrder(o) {
+      this.exErr = ""; this.exMsg = "";
+      this.busy = true;
+      try {
+        await this.post("/api/exchange/match", { order_id:o.id });
+        this.exMsg = "成交成功！价格 " + o.price + " × " + o.quantity;
+        await this.loadExchange();
+      } catch (e) { this.exErr = e.message; }
+      finally { this.busy = false; }
+    },
+    async load() {
+      this.globalErr = "";
+      if (this.tab==="home") this.overview = await this.get("/api/overview");
+      if (this.tab==="carbon" || this.tab==="export")
+        this.reports = await this.get("/api/carbon/reports") || [];
+      if (this.tab==="exchange") await this.loadExchange();
+      if (this.tab==="points") await this.loadPoints();
+      if (this.tab==="export") this.summary = await this.get("/api/export/summary");
+    },
+    // ---- 碳普惠 ----
+    async loadPoints() {
+      this.ptBalance = await this.get("/api/points/balance");
+      this.behaviors = await this.get("/api/points/behaviors") || [];
+      this.points = await this.get("/api/points/history") || [];
+    },
+    async checkin(b) {
+      this.ptErr = ""; this.ptMsg = ""; this.busy = true;
+      try {
+        await this.post("/api/points/checkin", { behavior: b.key });
+        this.ptMsg = "打卡「" + b.label + "」+" + b.points + " 分";
+        await this.loadPoints();
+      } catch (e) { this.ptErr = e.message; }
+      finally { this.busy = false; }
+    },
+    async redeem() {
+      this.ptErr = ""; this.ptMsg = "";
+      if (!(this.redeemAmount > 0)) { this.ptErr = "请输入抵扣数量"; return; }
+      this.busy = true;
+      try {
+        await this.post("/api/points/redeem", { points: this.redeemAmount });
+        this.ptMsg = "已抵扣 " + this.redeemAmount + " 分";
+        this.redeemAmount = null;
+        await this.loadPoints();
+      } catch (e) { this.ptErr = e.message; }
+      finally { this.busy = false; }
+    },
+    // ---- 导出 ----
+    printPage() { window.print(); },
+  },
+  mounted() { this.load(); },
+}).mount("#app");
+</script>
+</body>
+</html>
