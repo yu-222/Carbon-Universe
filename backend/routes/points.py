@@ -14,8 +14,9 @@ from typing import List, Optional
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from models import PointsRecord, PointsReason, User
-from store import store
+from bootstrap import repos
+from schemas.points import PointsReason, PointsRecord
+from schemas.users import User
 
 router = APIRouter(prefix="/api/points", tags=["points"])
 
@@ -42,27 +43,25 @@ class RedeemReq(BaseModel):
 
 
 def _current_user_id(uid: Optional[str]) -> str:
-    if uid and uid in store.col("users"):
+    if uid and repos.users.get(uid):
         return uid
-    users = list(store.col("users").keys())
+    users = repos.users.list()
     if not users:
         raise HTTPException(400, "系统暂无用户")
-    return users[0]
+    return users[0].id
 
 
 def _get_user(uid: str) -> User:
-    raw = store.col("users").get(uid)
-    if not raw:
+    u = repos.users.get(uid)
+    if not u:
         raise HTTPException(404, "用户不存在")
-    return User(**raw)
+    return u
 
 
 def _apply(user: User, reason: PointsReason, points: int, description: str) -> PointsRecord:
     record = PointsRecord(user_id=user.id, reason=reason, points=points, description=description)
-    store.col("points")[record.id] = record.model_dump()
-    user.points_balance += points
-    store.col("users")[user.id] = user.model_dump()
-    store.save()
+    repos.points.create(record)  # 积分流水追加，不覆盖历史
+    repos.users.update(user.id, {"points_balance": user.points_balance + points})
     return record
 
 
@@ -91,7 +90,7 @@ def checkin(payload: CheckinReq):
 @router.get("/history", response_model=List[PointsRecord])
 def history(user_id: Optional[str] = None):
     uid = _current_user_id(user_id)
-    records = [PointsRecord(**p) for p in store.col("points").values() if p["user_id"] == uid]
+    records = [p for p in repos.points.list() if p.user_id == uid]
     return sorted(records, key=lambda r: r.created_at, reverse=True)
 
 

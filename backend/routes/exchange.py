@@ -14,8 +14,9 @@ from typing import List, Optional
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from models import Order, OrderCreate, OrderSide, OrderStatus, Trade, User
-from store import store
+from bootstrap import repos
+from schemas.market import Order, OrderCreate, OrderSide, OrderStatus, Trade
+from schemas.users import User
 
 router = APIRouter(prefix="/api/exchange", tags=["exchange"])
 
@@ -35,23 +36,19 @@ class MatchReq(BaseModel):
 
 # --- 工具 ---
 def _current_user_id(uid: Optional[str]) -> str:
-    if uid and uid in store.col("users"):
+    if uid and repos.users.get(uid):
         return uid
-    users = list(store.col("users").keys())
+    users = repos.users.list()
     if not users:
         raise HTTPException(400, "系统暂无用户")
-    return users[0]
+    return users[0].id
 
 
 def _get_user(uid: str) -> User:
-    raw = store.col("users").get(uid)
-    if not raw:
+    u = repos.users.get(uid)
+    if not u:
         raise HTTPException(404, "用户不存在")
-    return User(**raw)
-
-
-def _save_user(u: User) -> None:
-    store.col("users")[u.id] = u.model_dump()
+    return u
 
 
 # --- 接口 ---
@@ -70,8 +67,7 @@ def balance(user_id: Optional[str] = None):
 @router.get("/orders")
 def orderbook():
     """返回订单簿：卖单价格升序，买单价格降序（价格优先）。"""
-    opens = [Order(**o) for o in store.col("orders").values()
-             if o["status"] == OrderStatus.OPEN]
+    opens = [o for o in repos.orders.list() if o.status == OrderStatus.OPEN]
     asks = sorted([o for o in opens if o.side == OrderSide.SELL], key=lambda x: x.price)
     bids = sorted([o for o in opens if o.side == OrderSide.BUY], key=lambda x: -x.price)
     return {"asks": asks, "bids": bids}
@@ -79,7 +75,7 @@ def orderbook():
 
 @router.get("/trades", response_model=List[Trade])
 def list_trades():
-    trades = [Trade(**t) for t in store.col("trades").values()]
+    trades = repos.trades.list()
     return sorted(trades, key=lambda t: t.created_at, reverse=True)
 
 
@@ -97,17 +93,16 @@ def place_order(payload: PlaceOrderReq):
         raise HTTPException(400, "法币余额不足以支付该买单")
 
     order = Order(user_id=uid, side=payload.type, price=payload.price, quantity=payload.amount)
-    store.put("orders", order.id, order.model_dump())
+    repos.orders.create(order)
     return order
 
 
 @router.post("/match")
 def match(payload: MatchReq):
     """吃单成交：taker 与指定对手方订单全额成交。"""
-    raw = store.col("orders").get(payload.order_id)
-    if not raw:
+    maker_order = repos.orders.get(payload.order_id)
+    if not maker_order:
         raise HTTPException(404, "订单不存在")
-    maker_order = Order(**raw)
     if maker_order.status != OrderStatus.OPEN:
         raise HTTPException(400, "该订单已不可成交")
 
@@ -139,22 +134,22 @@ def match(payload: MatchReq):
     buyer.carbon_balance = round(buyer.carbon_balance + qty, 3)
     buyer.cash_balance = round(buyer.cash_balance - total, 2)
     seller.cash_balance = round(seller.cash_balance + total, 2)
-    _save_user(buyer)
-    _save_user(seller)
+    repos.users.update(buyer.id, {"carbon_balance": buyer.carbon_balance, "cash_balance": buyer.cash_balance})
+    repos.users.update(seller.id, {"carbon_balance": seller.carbon_balance, "cash_balance": seller.cash_balance})
 
     # 订单完成并移出订单簿（标记 filled）
-    maker_order.filled = qty
-    maker_order.status = OrderStatus.FILLED
-    store.col("orders")[maker_order.id] = maker_order.model_dump()
+    repos.orders.update(maker_order.id, {
+        "filled": qty,
+        "status": OrderStatus.FILLED.value,
+    })
 
-    # 记录成交
+    # 记录成交（追加型，不可修改）
     trade = Trade(
         buy_order_id=maker_order.id if maker_order.side == OrderSide.BUY else "taker:" + taker_id,
         sell_order_id=maker_order.id if maker_order.side == OrderSide.SELL else "taker:" + taker_id,
         price=price, quantity=qty,
     )
-    store.col("trades")[trade.id] = trade.model_dump()
-    store.save()
+    repos.trades.create(trade)
 
     return {
         "trade": trade,
@@ -165,12 +160,10 @@ def match(payload: MatchReq):
 
 @router.post("/orders/{order_id}/cancel", response_model=Order)
 def cancel_order(order_id: str):
-    raw = store.col("orders").get(order_id)
-    if not raw:
+    order = repos.orders.get(order_id)
+    if not order:
         raise HTTPException(404, "订单不存在")
-    order = Order(**raw)
     if order.status != OrderStatus.OPEN:
         raise HTTPException(400, "订单无法撤销")
-    order.status = OrderStatus.CANCELLED
-    store.put("orders", order.id, order.model_dump())
+    order = repos.orders.update(order.id, {"status": OrderStatus.CANCELLED.value})
     return order

@@ -10,9 +10,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from store import store, seed_if_empty
-from models import User, UserCreate
-from routes import carbon, exchange, points, export
+from bootstrap import repos
+from routes import carbon, exchange, export, points
+from schemas.users import User, UserCreate
+from seed import seed_if_empty
 
 app = FastAPI(title="Carbon Universe 碳宇 API", version="1.0.0")
 
@@ -48,7 +49,7 @@ async def unhandled_exc_handler(request: Request, exc: Exception):
 
 @app.on_event("startup")
 def _startup() -> None:
-    seed_if_empty()
+    seed_if_empty(repos)
 
 
 @app.get("/")
@@ -64,13 +65,13 @@ def health():
 @app.get("/api/overview")
 def overview():
     """首页数据概览：总核算次数、总交易量(金额)、总积分。"""
-    reports = store.col("reports")
-    trades = store.col("trades")
+    reports = repos.reports.list()
+    trades = repos.trades.list()
     total_calc = len(reports)
-    total_trade_volume = round(sum(t["price"] * t["quantity"] for t in trades.values()), 2)
+    total_trade_volume = round(sum(t.price * t.quantity for t in trades), 2)
     total_trade_count = len(trades)
-    total_points = sum(u.get("points_balance", 0) for u in store.col("users").values())
-    total_emission = round(sum(r.get("total_emission", 0) for r in reports.values()), 3)
+    total_points = sum(u.points_balance for u in repos.users.list())
+    total_emission = round(sum(r.total_emission for r in reports), 3)
     return {
         "total_calc": total_calc,
         "total_emission": total_emission,
@@ -83,13 +84,13 @@ def overview():
 # --- 用户接口（基础，供各模块引用）---
 @app.get("/api/users")
 def list_users():
-    return list(store.col("users").values())
+    return repos.users.list()
 
 
 @app.post("/api/users", response_model=User)
 def create_user(payload: UserCreate):
     user = User(**payload.model_dump())
-    store.put("users", user.id, user.model_dump())
+    repos.users.create(user)
     return user
 
 

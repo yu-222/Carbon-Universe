@@ -14,14 +14,14 @@ from typing import Dict, List, Optional, Tuple
 
 from fastapi import APIRouter, HTTPException
 
-from models import (
+from bootstrap import repos
+from schemas.carbon import (
+    CalcFormItem,
+    CarbonCalcRequest,
     CarbonItem,
     CarbonReport,
     CarbonReportCreate,
-    CarbonCalcRequest,
-    CalcFormItem,
 )
-from store import store
 
 router = APIRouter(prefix="/api/carbon", tags=["carbon"])
 
@@ -142,8 +142,8 @@ def mock_carbon_ai(form_items: List[CalcFormItem]) -> Dict[str, object]:
 
 
 def _default_user_id() -> str:
-    users = list(store.col("users").keys())
-    return users[0] if users else "anonymous"
+    users = repos.users.list()
+    return users[0].id if users else "anonymous"
 
 
 # ---------------------------------------------------------------------------
@@ -175,13 +175,13 @@ def calculate(payload: CarbonCalcRequest):
         suggestions=ai["suggestions"],
         source=payload.mode,
     )
-    store.put("reports", report.id, report.model_dump())
+    repos.reports.create(report)
     return report
 
 
 @router.get("/reports", response_model=List[CarbonReport])
 def list_reports(user_id: Optional[str] = None):
-    reports = [CarbonReport(**r) for r in store.col("reports").values()]
+    reports = repos.reports.list()
     if user_id:
         reports = [r for r in reports if r.user_id == user_id]
     return sorted(reports, key=lambda r: r.created_at, reverse=True)
@@ -189,10 +189,10 @@ def list_reports(user_id: Optional[str] = None):
 
 @router.get("/reports/{report_id}", response_model=CarbonReport)
 def get_report(report_id: str):
-    raw = store.col("reports").get(report_id)
-    if not raw:
+    report = repos.reports.get(report_id)
+    if not report:
         raise HTTPException(404, "报告不存在")
-    return CarbonReport(**raw)
+    return report
 
 
 @router.post("/reports", response_model=CarbonReport)
@@ -208,7 +208,7 @@ def create_report(payload: CarbonReportCreate):
     ])
     report.ai_summary = ai["summary"]
     report.suggestions = ai["suggestions"]
-    store.put("reports", report.id, report.model_dump())
+    repos.reports.create(report)
     return report
 
 
