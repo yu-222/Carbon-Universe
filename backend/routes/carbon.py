@@ -1,144 +1,27 @@
-"""AI 智能碳足迹核算接口。
+"""AI 碳核算 Agent 接口。
 - POST /api/carbon/calculate     提交核算（form 表单 / nl 自然语言两种模式）
 - GET  /api/carbon/reports       历史报告列表
-- GET  /api/carbon/reports/{id}  单份报告
-- POST /api/carbon/reports       手动创建报告（保留旧接口）
+- GET  /api/carbon/reports/{id}  单份报告（含 Agent 轨迹）
+- GET  /api/carbon/reports/{id}/ledger  报告对应的全流程台账
+- POST /api/carbon/reports       手动创建报告（旧接口，同样走 Agent 流水线）
+- GET  /api/carbon/factors       排放因子库（含 ID/版本/来源/适用范围）
 
-大模型调用由 mock_carbon_ai() 占位：根据输入关键词返回合理的碳排放估算与明细，
-后续替换为真实 LLM 时保持相同的返回结构即可。
+核算由 agents 包编排：Activity Parser → Factor Selector → Calculation →
+Verification → Recommendation → Ledger Writer。
+大模型 API 由调用方通过环境变量提供，未配置时自动降级为规则解析。
 """
 from __future__ import annotations
 
-import re
-from typing import Dict, List, Optional, Tuple
+from typing import List, Optional
 
 from fastapi import APIRouter, HTTPException
 
+from agents import ledger_writer, orchestrator
+from agents.factor_selector import load_document
 from bootstrap import repos
-from schemas.carbon import (
-    CalcFormItem,
-    CarbonCalcRequest,
-    CarbonItem,
-    CarbonReport,
-    CarbonReportCreate,
-)
+from schemas.carbon import CarbonCalcRequest, CarbonReport, CarbonReportCreate
 
 router = APIRouter(prefix="/api/carbon", tags=["carbon"])
-
-
-# ---------------------------------------------------------------------------
-# 排放因子表（kgCO2e / 单位）—— 供 mock AI 与表单核算共用
-# ---------------------------------------------------------------------------
-FACTORS: Dict[str, Dict[str, object]] = {
-    "用电": {"factor": 0.5, "unit": "度", "category": "电力"},
-    "出行": {"factor": 0.2, "unit": "km", "category": "交通"},
-    "餐饮": {"factor": 1.8, "unit": "餐", "category": "餐饮"},
-    "办公": {"factor": 0.6, "unit": "小时", "category": "办公"},
-}
-
-# 自然语言关键词 → 活动类型 的映射（按优先级排序）
-NL_KEYWORDS: List[Tuple[str, str]] = [
-    ("开车", "出行"), ("驾车", "出行"), ("公里", "出行"), ("km", "出行"),
-    ("打车", "出行"), ("坐车", "出行"), ("骑", "出行"),
-    ("用电", "用电"), ("度电", "用电"), ("度", "用电"),
-    ("空调", "办公"), ("办公", "办公"), ("电脑", "办公"), ("加班", "办公"),
-    ("外卖", "餐饮"), ("吃", "餐饮"), ("餐", "餐饮"), ("饭", "餐饮"),
-]
-
-# 各活动类型的减碳建议
-SUGGESTION_BANK: Dict[str, str] = {
-    "出行": "尽量选择公共交通、拼车或骑行，可显著降低出行碳排放。",
-    "用电": "更换节能电器、随手关灯，并优先采购绿电。",
-    "办公": "合理设置空调温度（夏季≥26℃），下班关闭待机设备。",
-    "餐饮": "减少一次性餐具与食物浪费，适当增加植物性饮食。",
-}
-
-
-# ---------------------------------------------------------------------------
-# 自然语言解析：抽取“数字 + 关键词”片段
-# ---------------------------------------------------------------------------
-def _parse_nl(text: str) -> List[CalcFormItem]:
-    """把自然语言拆成若干 (活动类型, 数量) 片段。
-    规则：找到每个数字，在其前后就近窗口内匹配一个活动关键词。
-    """
-    items: List[CalcFormItem] = []
-    # 紧邻数字的单位词，优先级最高（避免被窗口内其它关键词抢占）
-    unit_rules: List[Tuple[str, str]] = [
-        ("小时", "办公"), ("公里", "出行"), ("km", "出行"),
-        ("度", "用电"), ("餐", "餐饮"), ("顿", "餐饮"),
-    ]
-    for m in re.finditer(r"(\d+(?:\.\d+)?)", text):
-        num = float(m.group(1))
-        tail = text[m.end(): m.end() + 6]                   # 数字后紧邻片段（判单位）
-        window = text[max(0, m.start() - 8): m.end() + 10]  # 数字前后窗口（判动作）
-        activity: Optional[str] = None
-        # 1) 先按紧邻单位判定
-        for kw, act in unit_rules:
-            if tail.lower().startswith(kw) or kw in tail:
-                activity = act
-                break
-        # 2) 再按窗口内动作关键词兜底
-        if activity is None:
-            for kw, act in NL_KEYWORDS:
-                if kw in window:
-                    activity = act
-                    break
-        if activity:
-            items.append(CalcFormItem(activity_type=activity, amount=num))
-    return items
-
-
-# ---------------------------------------------------------------------------
-# 模拟大模型：输入活动明细，输出排放数值 + 分项 + 摘要 + 建议
-# ---------------------------------------------------------------------------
-def mock_carbon_ai(form_items: List[CalcFormItem]) -> Dict[str, object]:
-    """占位版“AI 核算”。返回结构与真实 LLM 对齐：
-    { "items": [CarbonItem...], "total": float, "summary": str, "suggestions": [str] }
-    TODO: 替换为真实大模型调用（保持返回结构不变）。
-    """
-    carbon_items: List[CarbonItem] = []
-    for fi in form_items:
-        meta = FACTORS.get(fi.activity_type)
-        if not meta:
-            continue
-        factor = float(meta["factor"])
-        unit = fi.unit or str(meta["unit"])
-        emission = round(fi.amount * factor, 3)
-        carbon_items.append(CarbonItem(
-            category=str(meta["category"]),
-            activity=fi.activity_type,
-            amount=fi.amount,
-            unit=unit,
-            factor=factor,
-            emission=emission,
-        ))
-
-    total = round(sum(i.emission for i in carbon_items), 3)
-
-    if carbon_items:
-        top = max(carbon_items, key=lambda i: i.emission)
-        summary = (
-            f"（模拟AI）本次核算共 {len(carbon_items)} 项活动，"
-            f"合计碳排放约 {total} kgCO2e，其中「{top.activity}」占比最高"
-            f"（{top.emission} kg）。"
-        )
-    else:
-        summary = "（模拟AI）未识别到有效的排放活动，请补充数量与活动类型。"
-
-    seen = set()
-    suggestions: List[str] = []
-    for i in carbon_items:
-        tip = SUGGESTION_BANK.get(i.activity)
-        if tip and tip not in seen:
-            seen.add(tip)
-            suggestions.append(tip)
-
-    return {
-        "items": carbon_items,
-        "total": total,
-        "summary": summary,
-        "suggestions": suggestions,
-    }
 
 
 def _default_user_id() -> str:
@@ -146,35 +29,26 @@ def _default_user_id() -> str:
     return users[0].id if users else "anonymous"
 
 
-# ---------------------------------------------------------------------------
-# 接口
-# ---------------------------------------------------------------------------
 @router.post("/calculate", response_model=CarbonReport)
 def calculate(payload: CarbonCalcRequest):
     """提交核算：mode=form 用结构化明细，mode=nl 用自然语言。"""
     if payload.mode == "nl":
         if not payload.text or not payload.text.strip():
             raise HTTPException(400, "自然语言模式下 text 不能为空")
-        form_items = _parse_nl(payload.text)
-        if not form_items:
-            raise HTTPException(422, "未能从文本中识别出可核算的活动，请更具体地描述（含数量）")
-    else:
-        if not payload.items:
-            raise HTTPException(400, "表单模式下 items 不能为空")
-        form_items = payload.items
+    elif not payload.items:
+        raise HTTPException(400, "表单模式下 items 不能为空")
 
-    ai = mock_carbon_ai(form_items)
+    result = orchestrator.run_pipeline(payload)
+    report: CarbonReport = result["report"]
+    pipeline = result["pipeline"]
 
-    report = CarbonReport(
-        user_id=payload.user_id or _default_user_id(),
-        title=payload.title or ("自然语言核算" if payload.mode == "nl" else "碳足迹核算"),
-        period=payload.period or "即时核算",
-        items=ai["items"],
-        total_emission=ai["total"],
-        ai_summary=ai["summary"],
-        suggestions=ai["suggestions"],
-        source=payload.mode,
-    )
+    if not report.items:
+        raise HTTPException(422, "未能识别出可核算的排放活动，请更具体地描述（含数量与单位）")
+
+    # Ledger Writer：原子保存报告、明细、因子版本与 Agent 轨迹
+    ledger = ledger_writer.build_ledger(report.id, pipeline, report.checksum)
+    ledger = ledger_writer.write_ledger(repos, ledger)
+    report.ledger_id = ledger.id
     repos.reports.create(report)
     return report
 
@@ -195,24 +69,54 @@ def get_report(report_id: str):
     return report
 
 
+@router.get("/reports/{report_id}/ledger")
+def get_report_ledger(report_id: str):
+    """返回单份报告的全流程台账（含因子快照、公式、Agent 轨迹与校验哈希）。"""
+    report = repos.reports.get(report_id)
+    if not report:
+        raise HTTPException(404, "报告不存在")
+    if report.ledger_id:
+        ledger = repos.ledgers.get(report.ledger_id)
+        if ledger:
+            return ledger
+    ledgers = repos.ledgers.list()
+    for l in ledgers:
+        if l.report_id == report_id:
+            return l
+    raise HTTPException(404, "该报告尚未生成全流程台账")
+
+
 @router.post("/reports", response_model=CarbonReport)
 def create_report(payload: CarbonReportCreate):
-    """手动创建报告（保留旧接口）：按 amount * factor 计算各项排放。"""
-    report = CarbonReport(**payload.model_dump())
-    for item in report.items:
-        item.emission = round(item.amount * item.factor, 3)
-    report.total_emission = round(sum(i.emission for i in report.items), 3)
-    ai = mock_carbon_ai([
-        CalcFormItem(activity_type=i.activity, amount=i.amount, unit=i.unit)
-        for i in report.items
-    ])
-    report.ai_summary = ai["summary"]
-    report.suggestions = ai["suggestions"]
+    """手动创建报告（旧接口）：按 amount × factor 计算各项排放并走完整流水线。"""
+    req = CarbonCalcRequest(
+        user_id=payload.user_id,
+        title=payload.title,
+        period=payload.period,
+        mode="form",
+        items=[{
+            "activity_type": i.activity,
+            "amount": i.amount,
+            "unit": i.unit,
+        } for i in payload.items],
+    )
+    result = orchestrator.run_pipeline(req)
+    report = result["report"]
+    ledger = ledger_writer.build_ledger(report.id, result["pipeline"], report.checksum)
+    ledger = ledger_writer.write_ledger(repos, ledger)
+    report.ledger_id = ledger.id
     repos.reports.create(report)
     return report
 
 
+@router.get("/ledgers")
+def list_ledgers(limit: int = 20):
+    """全流程台账列表（含 Agent 轨迹与校验哈希），用于审计追溯。"""
+    ledgers = sorted(repos.ledgers.list(), key=lambda l: l.created_at, reverse=True)
+    return ledgers[:max(1, min(limit, 200))]
+
+
 @router.get("/factors")
 def factors():
-    """返回可选活动类型及默认因子，供前端表单下拉。"""
-    return FACTORS
+    """返回排放因子库文档（schema_version + 因子条目，含 ID、数值、版本、来源与适用范围）。"""
+    return load_document()

@@ -16,17 +16,141 @@
     .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px}.problem-intro h2{color:var(--accent);font:400 clamp(35px,3.7vw,56px)/1.32 var(--font-display);letter-spacing:0;margin:0 0 42px}.problem-intro p{font:400 clamp(24px,2.5vw,38px)/1.42 var(--font-display);margin:0;color:white}.number-list{display:grid;gap:54px;margin:0;padding:0;list-style:none}.number-item{display:grid;grid-template-columns:52px 1fr;gap:23px}.number{width:48px;height:48px;border:1px solid white;border-radius:50%;display:grid;place-items:center;font:16px var(--font-mono)}.number-item h3{font:500 21px/1.35 var(--font-display);margin:7px 0 10px}.number-item p{font-size:14px;line-height:1.65;margin:0;color:oklch(100% 0 0/.64);max-width:54ch}
     .stats-strip{background:var(--border);padding:72px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr)}.stat{padding:18px 45px;text-align:center;border-right:1px solid oklch(from var(--fg) l c h/.18)}.stat:last-child{border:0}.stat strong{display:block;font:400 clamp(48px,5vw,76px)/1 var(--font-display);letter-spacing:-.04em}.stat span{display:block;margin-top:13px;font-size:13px;color:oklch(from var(--muted) l c h/.72)}
     .capabilities-head{text-align:center;max-width:920px;margin:0 auto 54px}.capabilities-head h2{font:400 clamp(38px,4vw,60px)/1.3 var(--font-display);letter-spacing:0;margin:0}.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.cap-card{background:oklch(from var(--border) l c h/.32);padding:26px;min-height:305px;display:flex;flex-direction:column;border-top:25px solid var(--cap-color)}.cap-card:nth-child(1){--cap-color:oklch(69% .052 246)}.cap-card:nth-child(2){--cap-color:oklch(86% .12 115)}.cap-card:nth-child(3){--cap-color:oklch(70% .12 25)}.cap-card:nth-child(4){--cap-color:oklch(73% .11 303)}.cap-card h3{font:500 21px/1.35 var(--font-display);margin:8px 0 12px}.cap-card p{margin:0;color:oklch(from var(--muted) l c h/.7);font-size:13px}.cap-card button{margin-top:auto;align-self:flex-start}
-    .price-index{display:grid;grid-template-columns:.68fr 1.32fr;gap:72px;align-items:center}.price-copy h2{font:400 clamp(40px,4.2vw,64px)/1.22 var(--font-display);margin:0 0 22px}.price-copy p{color:oklch(from var(--muted) l c h/.72);max-width:40ch}.price-value{font:400 58px/1 var(--font-display);margin:38px 0 10px}.price-value small{font-size:14px}.line-chart{background:var(--surface);border-radius:22px;padding:28px;min-height:430px}.chart-top{display:flex;justify-content:space-between;align-items:center}.chart-top h3{font:500 18px var(--font-display);margin:0}.legend{font:11px var(--font-mono);color:oklch(from var(--muted) l c h/.62)}.chart-svg{width:100%;height:310px;margin-top:30px;overflow:visible}.grid-line{stroke:var(--border);stroke-width:1;stroke-dasharray:4 6}.area-fill{fill:oklch(from var(--border) l c h/.65)}.trend-line{fill:none;stroke:var(--fg);stroke-width:3}.trend-dot{fill:var(--accent);stroke:var(--fg);stroke-width:2}
+    .price-index{display:grid;grid-template-columns:.68fr 1.32fr;gap:72px;align-items:center}.price-copy h2{font:400 clamp(40px,4.2vw,64px)/1.22 var(--font-display);margin:0 0 22px}.price-copy p{color:oklch(from var(--muted) l c h/.72);max-width:40ch}.price-value{font:400 58px/1 var(--font-display);margin:38px 0 10px}.price-value small{font-size:14px}.line-chart{background:var(--surface);border-radius:22px;padding:28px;min-height:430px}.chart-top{display:flex;justify-content:space-between;align-items:center}.chart-top h3{font:500 15px var(--font-display);margin:0}.legend{font:10px var(--font-mono);color:oklch(from var(--muted) l c h/.62)}.chart-svg{width:100%;height:310px;margin-top:30px;overflow:visible}.grid-line{stroke:var(--border);stroke-width:1;stroke-dasharray:4 6}.area-fill{fill:oklch(from var(--border) l c h/.65)}.trend-line{fill:none;stroke:var(--fg);stroke-width:1.5}.trend-dot{fill:var(--accent);stroke:var(--fg);stroke-width:2}
     .closing{background:var(--fg);color:white;padding:100px 0}.closing-inner{display:flex;align-items:end;justify-content:space-between;gap:80px}.closing h2{font:400 clamp(42px,5vw,76px)/1.28 var(--font-display);letter-spacing:0;margin:0;max-width:920px}.closing p{color:oklch(100% 0 0/.65);max-width:38ch}.site-footer{background:var(--fg);color:white;border-top:1px solid oklch(100% 0 0/.22);padding:38px 0}.footer-inner{display:flex;justify-content:space-between;gap:30px;color:oklch(100% 0 0/.64);font-size:12px}
     .workspace{background:var(--bg);min-height:calc(100vh - 92px);padding:70px 0 100px}.workspace-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:42px}.workspace-head h1{font:400 clamp(40px,4vw,64px)/1.3 var(--font-display);letter-spacing:0;margin:0}.workspace-head p{margin:10px 0 0;color:oklch(from var(--muted) l c h/.68)}.workspace-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px}.panel{background:var(--surface);padding:28px;border:1px solid var(--border)}.panel-dark{background:var(--deep);color:white;border:0}.panel-head{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:26px}.panel h2{font:500 22px/1.35 var(--font-display);margin:0}.panel-sub{margin:5px 0 0;color:oklch(from var(--muted) l c h/.62);font-size:13px}.panel-dark .panel-sub{color:oklch(100% 0 0/.6)}.tag{display:inline-flex;border:1px solid currentColor;border-radius:99px;padding:4px 9px;font:10px var(--font-mono);letter-spacing:.06em;opacity:.7}.field{margin-bottom:15px}.field label{display:block;font-size:12px;margin-bottom:7px;color:oklch(from var(--muted) l c h/.68)}.control{width:100%;min-height:49px;border:1px solid var(--border);border-radius:0;background:var(--surface);color:var(--fg);padding:11px 13px}.control:hover{border-color:var(--fg)}textarea.control{min-height:150px;resize:vertical;line-height:1.7}.mode-switch{display:flex;border-bottom:1px solid var(--border);margin-bottom:24px}.mode-switch button{border:0;background:transparent;padding:0 0 12px;margin-right:28px;min-height:38px;cursor:pointer;color:oklch(from var(--muted) l c h/.55)}.mode-switch button.on{color:var(--fg);border-bottom:2px solid var(--fg)}.form-row{display:grid;grid-template-columns:1fr 1fr 1fr 44px;gap:10px;margin-bottom:10px}.form-actions{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-top:20px}.message{padding:12px 14px;margin:0 0 16px;border:1px solid;font-size:13px}.panel .message{margin:16px 0 0}.error{color:var(--danger);background:oklch(from var(--danger) l c h/.06)}.ok{color:var(--success);background:oklch(from var(--success) l c h/.06)}
     .result-value{font:400 64px/1 var(--font-display);letter-spacing:-.04em;margin:36px 0 10px}.result-value small{font:400 13px var(--font-body);letter-spacing:0}.breakdown{display:grid;gap:15px;margin-top:30px}.break-row{display:grid;grid-template-columns:72px 1fr minmax(75px,auto);gap:12px;align-items:center;font-size:12px}.track{height:8px;background:oklch(100% 0 0/.14)}.fill{height:100%;background:white}.advice{border-top:1px solid oklch(100% 0 0/.18);margin-top:28px;padding-top:22px;color:oklch(100% 0 0/.7);font-size:13px}.data-panel{margin-top:24px}.table-wrap{overflow:auto}.data-table{width:100%;border-collapse:collapse;min-width:650px}.data-table th,.data-table td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--border);white-space:nowrap}.data-table th{font:600 10px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:oklch(from var(--muted) l c h/.56)}.data-table td{font-size:13px}.data-table tbody tr:hover{background:var(--mint)}.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}.empty{text-align:center;padding:36px;color:oklch(from var(--muted) l c h/.56)}
     .balance-row{display:grid;grid-template-columns:repeat(3,1fr);background:var(--border);gap:1px;margin-bottom:24px}.balance{background:var(--surface);padding:22px}.balance span{display:block;color:oklch(from var(--muted) l c h/.56);font-size:11px}.balance strong{display:block;font:400 31px var(--font-display);margin-top:7px}.trade-grid{display:grid;grid-template-columns:360px 1fr;gap:24px}.order-book{display:grid;grid-template-columns:1fr 1fr;gap:30px}.order-side h3{font:500 13px var(--font-display);margin:0 0 15px}.depth-row{display:grid;grid-template-columns:1fr 1fr 44px;gap:8px;padding:9px 0;border-bottom:1px solid var(--border);font:12px var(--font-mono)}.depth-row button{border:0;background:transparent;text-decoration:underline;cursor:pointer;min-height:28px}.buy{color:var(--success)}.sell{color:var(--danger)}
-    .local-price-panel{margin-top:24px}.price-tools{display:flex;align-items:center;gap:12px}.price-tools .control{min-width:150px}.empty-chart{height:300px;position:relative;display:grid;place-items:center;background:var(--mint);overflow:hidden}.empty-chart:before,.empty-chart:after{content:"";position:absolute;inset:25% 0 auto;border-top:1px dashed var(--border);box-shadow:0 75px 0 var(--border),0 150px 0 var(--border)}.empty-chart:after{inset:0 auto 0 25%;border-top:0;border-left:1px dashed var(--border);box-shadow:110px 0 0 var(--border),220px 0 0 var(--border),330px 0 0 var(--border),440px 0 0 var(--border),550px 0 0 var(--border)}.empty-chart-copy{position:relative;z-index:1;background:oklch(from var(--surface) l c h/.92);border:1px solid var(--border);padding:20px 24px;text-align:center;max-width:390px}.empty-chart-copy strong{display:block;font:500 18px var(--font-display)}.empty-chart-copy span{display:block;margin-top:6px;color:oklch(from var(--muted) l c h/.62);font-size:12px}
+    .local-price-panel{margin-top:24px}.price-tools{display:flex;align-items:center;gap:12px}.price-tools .control{min-width:210px}.price-quote{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin:18px 0 2px}.price-quote .price{font:400 34px/1 var(--font-display);letter-spacing:-.03em}.price-quote .price small{font:400 12px var(--font-body);letter-spacing:0}.price-quote .change{font:13px var(--font-mono)}.change.up{color:var(--danger)}.change.down{color:var(--success)}.price-range{display:flex;gap:18px;margin:8px 0 0;color:oklch(from var(--muted) l c h/.6);font-size:11px}.price-range span{white-space:nowrap}.price-chart-svg{width:100%;height:auto;display:block;margin-top:16px;background:var(--mint);overflow:visible}.axis-label{font:9px var(--font-mono);fill:oklch(from var(--muted) l c h/.8)}.axis-line{stroke:var(--border);stroke-width:1}.trend-halo{fill:var(--accent);opacity:.22;animation:haloPulse 2.4s ease-in-out infinite}.trend-halo.thin{opacity:.09;animation-duration:3.6s}.price-pin .pin-bg{fill:var(--fg);stroke:var(--surface);stroke-width:1}.price-pin .pin-text{fill:white;font:600 9.5px var(--font-mono);letter-spacing:.02em}@keyframes haloPulse{0%,100%{opacity:.26}50%{opacity:.05}}.empty-chart{height:300px;position:relative;display:grid;place-items:center;background:var(--mint);overflow:hidden}.empty-chart:before,.empty-chart:after{content:"";position:absolute;inset:25% 0 auto;border-top:1px dashed var(--border);box-shadow:0 75px 0 var(--border),0 150px 0 var(--border)}.empty-chart:after{inset:0 auto 0 25%;border-top:0;border-left:1px dashed var(--border);box-shadow:110px 0 0 var(--border),220px 0 0 var(--border),330px 0 0 var(--border),440px 0 0 var(--border),550px 0 0 var(--border)}.empty-chart-copy{position:relative;z-index:1;background:oklch(from var(--surface) l c h/.92);border:1px solid var(--border);padding:20px 24px;text-align:center;max-width:390px}.empty-chart-copy strong{display:block;font:500 18px var(--font-display)}.empty-chart-copy span{display:block;margin-top:6px;color:oklch(from var(--muted) l c h/.62);font-size:12px}
     .points-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:24px}.behavior-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}.behavior{border:0;background:var(--surface);min-height:275px;padding:0;text-align:left;display:flex;flex-direction:column;cursor:pointer;color:var(--fg);overflow:hidden}.behavior:hover{background:var(--mint)}.behavior:not(:disabled):hover .behavior-visual img{transform:scale(1.025)}.behavior:disabled{cursor:not-allowed;opacity:.72}.behavior-copy{padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}.behavior-copy strong{font:500 16px var(--font-display)}.behavior-copy span{font:12px var(--font-mono);white-space:nowrap}.behavior-visual{aspect-ratio:4/3;overflow:hidden;background:var(--mint);border-bottom:1px solid var(--border)}.behavior-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%;transition:transform .28s ease}.points-total{font:400 clamp(66px,7vw,104px)/1 var(--font-display);letter-spacing:-.05em;margin:34px 0}.redeem{display:flex;gap:10px}.ledger-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-bottom:24px}.ledger-stat{background:var(--surface);padding:22px}.ledger-stat span{font-size:11px;color:oklch(from var(--muted) l c h/.56)}.ledger-stat strong{display:block;font:400 28px var(--font-display);margin-top:7px}.mobile-nav{display:none}
     @media(max-width:1080px){.top-nav{gap:14px}.section-head,.problem-grid,.price-index,.workspace-grid,.points-grid{grid-template-columns:1fr;gap:42px}.cap-grid{grid-template-columns:1fr 1fr}.trade-grid{grid-template-columns:1fr}.closing-inner{align-items:start;flex-direction:column}.hero-content{max-width:780px}}
     @media(max-width:760px){.container{width:min(calc(100% - 34px),var(--container))}.site-header{height:76px}.top-nav,.header-actions .outline,.live-pill{display:none}.menu-toggle{display:block}.mobile-nav{display:flex;position:fixed;left:8px;right:8px;bottom:8px;z-index:40;background:var(--surface);border:1px solid var(--border);padding:5px;overflow:auto}.mobile-nav button{border:0;background:transparent;min-width:76px;flex:1;color:var(--fg);font-size:11px}.mobile-nav button.active{background:var(--fg);color:white}.hero{min-height:850px}.hero-content{padding-top:130px}.hero h1{font-size:48px;line-height:1.34}.hero-bottom{bottom:90px}.section{padding:78px 0}.section-head{margin-bottom:42px}.emission-chart{grid-template-columns:1fr;height:290px}.axis{display:none}.bars{gap:14px}.chart-bar{width:70%}.chart-caption{flex-direction:column}.problem-grid{gap:58px}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid oklch(from var(--fg) l c h/.18)}.cap-grid{grid-template-columns:1fr}.cap-card{min-height:250px}.price-index{gap:40px}.line-chart{padding:18px;min-height:360px}.workspace{padding:50px 0 110px}.workspace-head{align-items:start;flex-direction:column}.form-row{grid-template-columns:1fr 1fr}.form-row .icon-button{grid-column:2}.order-book{grid-template-columns:1fr}.behavior-grid{grid-template-columns:1fr 1fr}.balance-row,.ledger-stats{grid-template-columns:1fr 1fr}.price-tools{align-items:stretch;flex-direction:column}.price-tools .control{width:100%}.empty-chart{height:260px}.footer-inner{flex-direction:column}.closing{padding-bottom:130px}}
     @media(max-width:460px){.hero h1{font-size:40px}.form-row,.behavior-grid,.balance-row,.ledger-stats{grid-template-columns:1fr}.form-row .icon-button{grid-column:auto}.redeem{flex-direction:column}.redeem .primary{width:100%}.behavior{min-height:255px}}
     @media print{.site-header,.mobile-nav,.no-print,.site-footer{display:none!important}.workspace{padding:0}.panel{break-inside:avoid}.container{width:100%}body{background:white;color:#111}}
+    /* ===== 全球碳观测 · 悬浮地球入口 ===== */
+    .globe-fab{position:fixed;right:26px;bottom:26px;z-index:9990;width:66px;height:66px;border-radius:50%;border:none;cursor:pointer;background:radial-gradient(circle at 32% 30%,#8fd4ff,#1e6fd9 45%,#0b3a7a);box-shadow:0 8px 24px rgba(20,80,180,.5),inset -6px -10px 16px rgba(0,0,0,.3),inset 5px 7px 12px rgba(255,255,255,.35);display:grid;place-items:center;transition:transform .2s,box-shadow .2s;padding:0}
+    .globe-fab:hover{transform:scale(1.08) rotate(10deg);box-shadow:0 10px 30px rgba(20,120,220,.65),inset -6px -10px 16px rgba(0,0,0,.28),inset 5px 7px 12px rgba(255,255,255,.4)}
+    .globe-fab:active{transform:scale(.96)}
+    .globe-fab .ring{position:absolute;inset:0;border:2px dashed rgba(255,255,255,.5);border-radius:50%;animation:globeSpin 14s linear infinite;pointer-events:none}
+    @keyframes globeSpin{to{transform:rotate(360deg)}}
+    /* ===== 全屏观测容器 ===== */
+    .globe-overlay{position:fixed;inset:0;z-index:9995;background:radial-gradient(ellipse at center,rgba(7,20,44,.96),rgba(2,8,22,.99));display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s}
+    .globe-overlay.open{opacity:1;pointer-events:auto}
+    .globe-overlay *{font-family:var(--font-body)}
+    /* --- 顶栏：双选模式切换 --- */
+    .globe-top{position:relative;z-index:8;display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid rgba(120,180,255,.18);background:rgba(6,16,36,.62);flex-wrap:wrap}
+    .globe-brand{font-weight:600;letter-spacing:.05em;font-size:15px;color:#e8f2ff;margin-right:2px;white-space:nowrap}
+    .mode-toggle{display:flex;gap:3px;border:1px solid rgba(160,210,255,.35);background:rgba(10,30,60,.6);border-radius:99px;padding:3px}
+    .mode-toggle button{border:0;background:transparent;color:#9fc3e8;padding:0 22px;min-height:32px;border-radius:99px;cursor:pointer;font-size:13px;transition:.18s;white-space:nowrap}
+    .mode-toggle button:hover{color:#e8f2ff}
+    .mode-toggle button.on{background:linear-gradient(120deg,#2f8bff,#5ad1ff);color:#04122a;font-weight:600}
+    .globe-top .spacer{flex:1}
+    .view-toggle{display:flex;gap:2px;border:1px solid rgba(160,210,255,.28);border-radius:8px;overflow:hidden}
+    .view-toggle button{border:0;background:rgba(10,30,60,.6);color:#9fc3e8;padding:0 13px;min-height:32px;cursor:pointer;font-size:12px;transition:.15s}
+    .view-toggle button:hover{color:#e8f2ff}
+    .view-toggle button.on{background:rgba(47,139,255,.6);color:#fff}
+    .globe-close{width:36px;height:36px;border-radius:50%;border:1px solid rgba(160,210,255,.4);background:rgba(10,30,60,.6);color:#cfe6ff;font-size:16px;cursor:pointer;line-height:1;transition:.15s;padding:0}
+    .globe-close:hover{background:#2f8bff;color:#fff}
+    /* --- 筛选栏：共用搜索 + 维度筛选 + 时间轴 --- */
+    .globe-filters{position:relative;z-index:7;display:flex;align-items:center;gap:9px;padding:9px 20px;border-bottom:1px solid rgba(120,180,255,.13);background:rgba(6,16,36,.42);flex-wrap:wrap}
+    .globe-search{position:relative;display:flex;align-items:center}
+    .globe-search .ico{position:absolute;left:10px;color:rgba(160,205,255,.55);font-size:12px;pointer-events:none}
+    .globe-search input{border:1px solid rgba(160,210,255,.32);background:rgba(10,30,60,.72);color:#e8f2ff;border-radius:8px;min-height:34px;font-size:13px;width:216px;padding:0 30px}
+    .globe-search input::placeholder{color:rgba(200,226,255,.38)}
+    .globe-search input:focus{outline:none;border-color:#5ad1ff}
+    .globe-search .clear{position:absolute;right:5px;border:0;background:transparent;color:rgba(200,226,255,.5);cursor:pointer;min-height:26px;padding:0 5px;font-size:14px}
+    .globe-search .clear:hover{color:#fff}
+    .globe-select{border:1px solid rgba(160,210,255,.32);background:rgba(10,30,60,.72);color:#e8f2ff;border-radius:8px;padding:0 9px;min-height:34px;font-size:13px;cursor:pointer;max-width:156px}
+    .globe-select:focus{outline:none;border-color:#5ad1ff}
+    .globe-select option{background:#0a1e3c;color:#cfe6ff}
+    .filter-tag{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(90,209,255,.4);background:rgba(47,139,255,.16);color:#bfe0ff;border-radius:99px;padding:3px 10px;font-size:11.5px;white-space:nowrap}
+    .filter-tag button{border:0;background:transparent;color:inherit;cursor:pointer;padding:0;min-height:auto;font-size:13px;line-height:1}
+    .timeline{display:flex;align-items:center;gap:0;margin-left:auto;background:rgba(10,30,60,.5);border:1px solid rgba(160,210,255,.22);border-radius:99px;padding:4px 8px}
+    .timeline-label{font:600 10px var(--font-mono);letter-spacing:.08em;color:rgba(200,226,255,.5);margin:0 6px 0 4px}
+    .timeline-node{display:flex;flex-direction:column;align-items:center;gap:4px;border:0;background:transparent;color:rgba(200,226,255,.62);cursor:pointer;padding:0 12px;min-height:32px}
+    .timeline-node .dot{width:9px;height:9px;border-radius:50%;background:rgba(160,210,255,.32);transition:.18s}
+    .timeline-node:hover .dot{background:#7ad0ff}
+    .timeline-node.on{color:#fff}
+    .timeline-node.on .dot{background:#5ad1ff;box-shadow:0 0 0 4px rgba(90,209,255,.2);transform:scale(1.18)}
+    .timeline-node em{font:11px var(--font-mono);font-style:normal}
+    .timeline-play{border:1px solid rgba(160,210,255,.32);background:transparent;color:#cfe6ff;border-radius:50%;width:28px;height:28px;min-height:28px;cursor:pointer;font-size:11px;margin-left:6px;padding:0}
+    .timeline-play:hover{background:rgba(47,139,255,.35)}
+    /* --- 主体：地图舞台 + 侧边详情栏 --- */
+    .globe-body{flex:1;display:grid;grid-template-columns:1fr 384px;min-height:0}
+    .globe-stage{position:relative;min-width:0;min-height:0}
+    #globeChart{position:absolute;inset:0;width:100%;height:100%}
+    .globe-loading{position:absolute;inset:0;display:grid;place-items:center;color:#9fc3e8;font-size:14px;letter-spacing:.1em;z-index:6;background:rgba(4,12,28,.82);text-align:center;padding:0 24px;line-height:1.8}
+    .globe-hint{position:absolute;right:14px;bottom:14px;z-index:5;color:rgba(200,226,255,.5);font-size:11.5px;letter-spacing:.04em;pointer-events:none;background:rgba(4,12,28,.45);padding:4px 11px;border-radius:99px}
+    /* --- 侧边栏：详情卡 / 趋势 / 排行榜 --- */
+    .globe-side{border-left:1px solid rgba(120,180,255,.16);background:rgba(5,14,32,.72);display:flex;flex-direction:column;min-height:0;overflow-y:auto}
+    .globe-side::-webkit-scrollbar{width:7px}
+    .globe-side::-webkit-scrollbar-thumb{background:rgba(120,180,255,.25);border-radius:4px}
+    .side-block{border-bottom:1px solid rgba(120,180,255,.13);padding:15px 18px}
+    .side-block:last-child{border-bottom:0}
+    .side-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px;font:600 10px var(--font-mono);letter-spacing:.11em;text-transform:uppercase;color:rgba(200,226,255,.52)}
+    .side-title b{font:600 11px var(--font-mono);color:#8fd4ff;letter-spacing:.04em;text-transform:none}
+    .detail-card{border:1px solid rgba(120,180,255,.22);border-radius:12px;background:linear-gradient(160deg,rgba(22,55,105,.55),rgba(8,24,50,.35));padding:15px 16px}
+    .detail-name{font:600 17px/1.35 var(--font-display);color:#e8f2ff;margin:0 0 3px}
+    .detail-sub{font-size:12px;color:rgba(200,226,255,.6);margin:0 0 13px}
+    .detail-metric{display:flex;align-items:baseline;gap:7px}
+    .detail-metric strong{font:400 34px/1 var(--font-display);color:#8fd4ff;letter-spacing:-.02em}
+    .detail-metric span{font-size:12px;color:rgba(200,226,255,.62)}
+    .detail-delta{font-size:11.5px;margin-top:5px}
+    .up{color:#ff8a5c}.down{color:#39d98a}.flat{color:rgba(200,226,255,.5)}
+    .detail-bars{display:grid;gap:6px;margin:13px 0 4px}
+    .detail-bar{display:grid;grid-template-columns:34px 1fr 62px;gap:9px;align-items:center;font-size:11px;color:rgba(200,226,255,.62)}
+    .detail-bar i{display:block;height:5px;border-radius:3px;background:linear-gradient(90deg,#2f8bff,#5ad1ff)}
+    .detail-bar b{font:11px var(--font-mono);color:#cfe6ff;text-align:right;font-weight:400}
+    .detail-meta{display:grid;gap:7px;border-top:1px solid rgba(120,180,255,.16);margin-top:13px;padding-top:12px}
+    .meta-row{display:grid;grid-template-columns:72px 1fr;gap:10px;font-size:11.5px;align-items:start}
+    .meta-row dt{color:rgba(200,226,255,.5)}
+    .meta-row dd{margin:0;color:#dceaff;line-height:1.5}
+    #trendChart{width:100%;height:172px}
+    .rank-list{display:grid;gap:2px;max-height:300px;overflow-y:auto}
+    .rank-list::-webkit-scrollbar{width:6px}
+    .rank-list::-webkit-scrollbar-thumb{background:rgba(120,180,255,.25);border-radius:3px}
+    .rank-item{display:grid;grid-template-columns:24px 1fr auto;gap:9px;align-items:center;padding:7px 9px;border:0;background:transparent;color:#dceaff;border-radius:8px;cursor:pointer;text-align:left;font-size:12.5px;min-height:40px;transition:.14s;width:100%}
+    .rank-item:hover{background:rgba(47,139,255,.16)}
+    .rank-item.on{background:rgba(47,139,255,.3);box-shadow:inset 0 0 0 1px rgba(90,209,255,.42)}
+    .rank-no{font:600 11px var(--font-mono);color:rgba(200,226,255,.42);text-align:center}
+    .rank-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+    .rank-name small{display:block;font-size:10.5px;color:rgba(200,226,255,.46);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .rank-bar{height:3px;background:rgba(120,180,255,.16);border-radius:2px;margin-top:5px;overflow:hidden}
+    .rank-bar i{display:block;height:100%;border-radius:2px}
+    .rank-val{font:12px var(--font-mono);color:#8fd4ff;white-space:nowrap;text-align:right}
+    .rank-val small{display:block;font-size:10px;color:rgba(200,226,255,.45)}
+    .side-empty{padding:24px 10px;text-align:center;color:rgba(200,226,255,.4);font-size:12.5px;line-height:1.75}
+    .side-hint{font-size:11px;color:rgba(200,226,255,.42);margin:10px 0 0;line-height:1.7}
+    /* --- 图例 --- */
+    .globe-legend{position:absolute;left:16px;bottom:16px;z-index:5;background:rgba(6,18,40,.8);border:1px solid rgba(120,180,255,.22);border-radius:10px;padding:11px 13px;backdrop-filter:blur(6px)}
+    .legend-title{font:600 10px var(--font-mono);letter-spacing:.08em;color:rgba(200,226,255,.62);margin-bottom:8px}
+    .legend-bar{width:158px;height:9px;border-radius:5px;margin-bottom:5px}
+    .legend-ticks{display:flex;justify-content:space-between;font:10px var(--font-mono);color:rgba(200,226,255,.55)}
+    .legend-note{margin-top:8px;font-size:10.5px;color:rgba(200,226,255,.45);line-height:1.65;max-width:200px}
+    .legend-dot-row{display:flex;align-items:center;gap:6px;margin-top:7px;font-size:10.5px;color:rgba(200,226,255,.6)}
+    .legend-dot-row i{width:11px;height:11px;border-radius:50%;display:inline-block}
+    @media(max-width:1200px){.globe-body{grid-template-columns:1fr 320px}}
+    @media(max-width:900px){.globe-body{grid-template-columns:1fr;grid-template-rows:minmax(320px,1fr) auto}.globe-side{border-left:0;border-top:1px solid rgba(120,180,255,.16);max-height:44vh}.timeline{margin-left:0;width:100%;justify-content:center}.globe-search input{width:100%}.globe-search{flex:1}}
+    /* --- Agent 核算元信息 / 校验警告 / 轨迹 --- */
+    .agent-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:7px 14px;margin-top:16px;padding:12px 14px;background:rgba(6,18,40,.55);border:1px solid rgba(120,180,255,.16);border-radius:10px}
+    .agent-meta .meta-row{display:flex;justify-content:space-between;gap:8px;font-size:12px;min-width:0}
+    .agent-meta .meta-row span{color:rgba(200,226,255,.55)}
+    .agent-meta .meta-row strong{color:#cfe6ff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .agent-meta .meta-row strong.ok{color:#39d98a}
+    .agent-meta .meta-row strong.warning{color:#ffd257}
+    .agent-meta .meta-row strong.error{color:#ff5d5d}
+    .pipe-badge{display:inline-block;padding:1px 8px;border-radius:99px;font-size:10.5px;font-weight:600;letter-spacing:.03em;border:1px solid}
+    .pipe-badge.ok{color:#39d98a;border-color:rgba(57,217,138,.4);background:rgba(57,217,138,.08)}
+    .pipe-badge.warning{color:#ffd257;border-color:rgba(255,210,87,.4);background:rgba(255,210,87,.08)}
+    .pipe-badge.error{color:#ff5d5d;border-color:rgba(255,93,93,.4);background:rgba(255,93,93,.08)}
+    .warnings{margin-top:14px;padding:10px 13px;background:rgba(255,210,87,.06);border:1px solid rgba(255,210,87,.25);border-radius:10px}
+    .warnings strong{font-size:11.5px;color:#ffd257}
+    .warnings ul{margin:7px 0 0;padding-left:18px}
+    .warnings li{font-size:11.5px;color:rgba(230,238,255,.78);line-height:1.7;margin:2px 0}
+    .agent-trace{margin-top:14px;padding:10px 13px;background:rgba(6,18,40,.45);border:1px solid rgba(120,180,255,.16);border-radius:10px}
+    .agent-trace strong{font-size:11.5px;color:rgba(200,226,255,.85)}
+    .agent-trace ol{margin:7px 0 0;padding-left:18px;display:grid;grid-template-columns:1fr 1fr;gap:3px 12px}
+    .agent-trace li{font:10.5px var(--font-mono);color:rgba(200,226,255,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   </style>
 </head>
 <body>
@@ -44,8 +168,8 @@
   </template>
 
   <main v-else class="workspace" :data-od-id="tab+'-screen'"><div class="container"><div v-if="globalErr" class="message error">{{globalErr}}</div>
-    <section v-if="tab==='tracker'"><div class="workspace-head"><div><p class="eyebrow">AI EMISSION TRACKER</p><h1 data-od-id="tracker-title">AI 碳核算工作台</h1><p>从活动描述到结构化排放结果，只需要一个入口。</p></div><span class="tag">{{online?'实时接口':'演示数据'}}</span></div><div class="workspace-grid"><article class="panel" data-od-id="calculation-input"><div class="panel-head"><div><h2>录入活动数据</h2><p class="panel-sub">支持自然语言与结构化表单</p></div></div><div class="mode-switch"><button :class="{on:calcMode==='nl'}" @click="calcMode='nl'">自然语言</button><button :class="{on:calcMode==='form'}" @click="calcMode='form'">结构化表单</button></div><template v-if="calcMode==='nl'"><div class="field"><label for="nlText">描述你的碳活动</label><textarea id="nlText" class="control" v-model="nlText" placeholder="例如：我今天开车上班 20 公里，办公室空调开了 8 小时，还用了 15 度电"></textarea></div><div class="form-actions"><span class="panel-sub">请包含活动类型与数量</span><button class="primary" :disabled="busy" @click="submitNl" data-od-id="calculate-natural">{{busy?'核算中…':'生成碳足迹'}}</button></div></template><template v-else><div v-for="(f,i) in form" :key="i" class="form-row"><select class="control" v-model="f.activity_type"><option v-for="t in activityTypes" :key="t">{{t}}</option></select><input class="control" type="number" min="0" v-model.number="f.amount" placeholder="活动量"><input class="control" v-model="f.unit" :placeholder="unitHint(f.activity_type)"><button class="outline icon-button" @click="removeRow(i)" :disabled="form.length===1">×</button></div><div class="form-actions"><button class="quiet" @click="addRow">添加一项</button><button class="primary" :disabled="busy" @click="submitForm" data-od-id="calculate-form">{{busy?'核算中…':'计算排放'}}</button></div></template><div v-if="calcErr" class="message error">{{calcErr}}</div></article><article class="panel panel-dark" data-od-id="calculation-result"><div class="panel-head"><div><h2>核算结果</h2><p class="panel-sub">{{result?'排放来源已拆解':'等待输入数据'}}</p></div><span v-if="result" class="tag">{{result.source==='nl'?'文本识别':'表单核算'}}</span></div><template v-if="result"><div class="result-value">{{formatNum(result.total_emission,2)}} <small>kgCO₂e</small></div><div class="breakdown"><div class="break-row" v-for="item in result.items" :key="item.activity+item.amount"><span>{{item.category}}</span><div class="track"><div class="fill" :style="{width:Math.max(5,item.emission/result.total_emission*100)+'%'}"></div></div><span class="num">{{formatNum(item.emission,1)}}</span></div></div><div class="advice"><p>{{result.ai_summary}}</p><ul><li v-for="s in result.suggestions" :key="s">{{s}}</li></ul></div></template><div v-else class="empty">完成一次核算后，这里将展示总排放、分项来源和 AI 建议。</div></article></div><article class="panel data-panel" data-od-id="report-history"><div class="panel-head"><div><h2>历史核算报告</h2><p class="panel-sub">所有记录可进入台账追溯</p></div><span class="tag">{{reports.length}} 份</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>报告</th><th>周期</th><th>排放量</th><th>来源</th><th>时间</th></tr></thead><tbody><tr v-for="r in reports" :key="r.id"><td>{{r.title}}</td><td>{{r.period}}</td><td class="num">{{formatNum(r.total_emission,2)}} kg</td><td>{{r.source==='nl'?'自然语言':'表单'}}</td><td class="num">{{dateTime(r.created_at)}}</td></tr></tbody></table></div></article></section>
-    <section v-if="tab==='exchange'"><div class="workspace-head"><div><p class="eyebrow">VIRTUAL CARBON MARKET</p><h1 data-od-id="exchange-title">碳资产交易工作台</h1><p>模拟碳信用挂单、成交与双余额结算。</p></div><span class="tag">账户 · {{balance.name}}</span></div><div class="balance-row"><div class="balance"><span>碳信用余额</span><strong>{{formatNum(balance.carbon_balance,2)}}</strong></div><div class="balance"><span>法币余额</span><strong>¥{{formatNum(balance.cash_balance,2)}}</strong></div><div class="balance"><span>最新成交价</span><strong>¥{{lastPrice}}</strong></div></div><div class="trade-grid"><article class="panel" data-od-id="order-form"><div class="panel-head"><div><h2>创建挂单</h2><p class="panel-sub">挂单后进入订单簿</p></div></div><div class="mode-switch"><button :class="{on:orderType==='buy'}" @click="orderType='buy'">买入</button><button :class="{on:orderType==='sell'}" @click="orderType='sell'">卖出</button></div><div class="field"><label>数量</label><input class="control" type="number" min="0" v-model.number="orderForm.amount" placeholder="碳信用单位"></div><div class="field"><label>单价 / 元</label><input class="control" type="number" min="0" v-model.number="orderForm.price" placeholder="68.50"></div><div class="form-actions"><span class="num">预计 ¥{{formatNum(orderTotal,2)}}</span><button class="primary" :disabled="busy" @click="placeOrder" data-od-id="submit-order">{{busy?'提交中…':(orderType==='buy'?'挂买单':'挂卖单')}}</button></div><div v-if="exErr" class="message error">{{exErr}}</div><div v-if="exMsg" class="message ok">{{exMsg}}</div></article><article class="panel" data-od-id="order-book"><div class="panel-head"><div><h2>市场深度</h2><p class="panel-sub">点击对手方订单全额成交</p></div><span class="tag">{{book.asks.length+book.bids.length}} 笔</span></div><div class="order-book"><div class="order-side"><h3 class="sell">卖盘 / ASK</h3><div class="depth-row" v-for="o in book.asks" :key="o.id"><span>¥{{o.price}}</span><span>{{o.quantity}}</span><button v-if="o.user_id!==myId" @click="takeOrder(o)">买入</button><span v-else>我的</span></div><div v-if="!book.asks.length" class="empty">暂无卖单</div></div><div class="order-side"><h3 class="buy">买盘 / BID</h3><div class="depth-row" v-for="o in book.bids" :key="o.id"><span>¥{{o.price}}</span><span>{{o.quantity}}</span><button v-if="o.user_id!==myId" @click="takeOrder(o)">卖出</button><span v-else>我的</span></div><div v-if="!book.bids.length" class="empty">暂无买单</div></div></div></article></div><article class="panel data-panel" data-od-id="trade-history"><div class="panel-head"><div><h2>最近成交</h2><p class="panel-sub">成交后余额与台账同步更新</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>成交编号</th><th>价格</th><th>数量</th><th>成交额</th><th>时间</th></tr></thead><tbody><tr v-for="t in trades" :key="t.id"><td class="num">{{t.id}}</td><td>¥{{formatNum(t.price,2)}}</td><td>{{t.quantity}}</td><td>¥{{formatNum(t.price*t.quantity,2)}}</td><td class="num">{{dateTime(t.created_at)}}</td></tr></tbody></table></div></article><article class="panel local-price-panel" data-od-id="local-carbon-price"><div class="panel-head"><div><h2>当地碳价走势</h2><p class="panel-sub">预留地区碳市场价格数据接口</p></div><div class="price-tools"><label class="panel-sub" for="price-region">地区</label><select id="price-region" class="control" v-model="priceRegion" data-od-id="price-region-select"><option>北京</option><option>上海</option><option>广东</option><option>深圳</option><option>湖北</option><option>天津</option><option>重庆</option><option>福建</option></select></div></div><div class="empty-chart" role="img" :aria-label="priceRegion+'碳价走势空状态'"><div class="empty-chart-copy"><strong>{{priceRegion}}碳价数据待接入</strong><span>接入当地交易所价格接口后，将在此展示日线、周线与成交量。</span></div></div></article></section>
+    <section v-if="tab==='tracker'"><div class="workspace-head"><div><p class="eyebrow">AI EMISSION TRACKER</p><h1 data-od-id="tracker-title">AI 碳核算工作台</h1><p>从活动描述到结构化排放结果，只需要一个入口。</p></div><span class="tag">{{online?'实时接口':'演示数据'}}</span></div><div class="workspace-grid"><article class="panel" data-od-id="calculation-input"><div class="panel-head"><div><h2>录入活动数据</h2><p class="panel-sub">支持自然语言与结构化表单</p></div></div><div class="mode-switch"><button :class="{on:calcMode==='nl'}" @click="calcMode='nl'">自然语言</button><button :class="{on:calcMode==='form'}" @click="calcMode='form'">结构化表单</button></div><template v-if="calcMode==='nl'"><div class="field"><label for="nlText">描述你的碳活动</label><textarea id="nlText" class="control" v-model="nlText" placeholder="例如：今年上半年，我在北京开车通勤约 800 公里，办公室用电 3000 度，食堂天然气用了 200 立方米"></textarea></div><div class="form-actions"><span class="panel-sub">请包含活动类型与数量</span><button class="primary" :disabled="busy" @click="submitNl" data-od-id="calculate-natural">{{busy?'核算中…':'生成碳足迹'}}</button></div></template><template v-else><div v-for="(f,i) in form" :key="i" class="form-row"><select class="control" v-model="f.activity_type"><option v-for="t in activityTypes" :key="t">{{t}}</option></select><input class="control" type="number" min="0" v-model.number="f.amount" placeholder="活动量"><input class="control" v-model="f.unit" :placeholder="unitHint(f.activity_type)"><button class="outline icon-button" @click="removeRow(i)" :disabled="form.length===1">×</button></div><div class="form-actions"><button class="quiet" @click="addRow">添加一项</button><button class="primary" :disabled="busy" @click="submitForm" data-od-id="calculate-form">{{busy?'核算中…':'计算排放'}}</button></div></template><div v-if="calcErr" class="message error">{{calcErr}}</div></article><article class="panel panel-dark" data-od-id="calculation-result"><div class="panel-head"><div><h2>核算结果</h2><p class="panel-sub">{{result?'排放来源已拆解':'等待输入数据'}}</p></div><span v-if="result" class="tag">{{result.source==='nl'?'文本识别':'表单核算'}}</span></div><template v-if="result"><div class="result-value">{{formatNum(result.total_emission,2)}} <small>kgCO₂e</small></div><div class="breakdown"><div class="break-row" v-for="item in result.items" :key="item.activity+item.amount"><span>{{item.category}}</span><div class="track"><div class="fill" :style="{width:Math.max(5,item.emission/result.total_emission*100)+'%'}"></div></div><span class="num">{{formatNum(item.emission,1)}}</span></div></div><div class="advice"><p>{{result.ai_summary}}</p><ul><li v-for="s in result.suggestions" :key="s">{{s}}</li></ul></div><div class="agent-meta"><div class="meta-row"><span>置信度</span><strong>{{Math.round((result.confidence||0)*100)}}%</strong></div><div class="meta-row"><span>核算模型</span><strong>{{result.model_name||'—'}}</strong></div><div class="meta-row"><span>Prompt 版本</span><strong>{{result.prompt_version||'—'}}</strong></div><div class="meta-row"><span>流水线状态</span><strong :class="result.pipeline_status">{{result.pipeline_status}}</strong></div><div class="meta-row"><span>链路耗时</span><strong>{{result.duration_ms}} ms</strong></div><div class="meta-row"><span>报告校验</span><strong>{{result.report_version}} · {{result.checksum?result.checksum.slice(0,8):'—'}}</strong></div></div><div v-if="result.warnings&&result.warnings.length" class="warnings"><strong>校验警告 · {{result.warnings.length}} 项</strong><ul><li v-for="(w,wi) in result.warnings" :key="wi">{{w}}</li></ul></div><div v-if="result.trace&&result.trace.length" class="agent-trace"><strong>Agent 轨迹</strong><ol><li v-for="t in result.trace" :key="t.agent">{{t.agent}} · {{t.status}} · {{t.duration_ms}}ms</li></ol></div></template><div v-else class="empty">完成一次核算后，这里将展示总排放、分项来源和 AI 建议。</div></article></div><article class="panel data-panel" data-od-id="report-history"><div class="panel-head"><div><h2>历史核算报告</h2><p class="panel-sub">所有记录可进入台账追溯</p></div><span class="tag">{{reports.length}} 份</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>报告</th><th>周期</th><th>排放量</th><th>来源</th><th>校验</th><th>时间</th></tr></thead><tbody><tr v-for="r in reports" :key="r.id"><td>{{r.title}}</td><td>{{r.period}}</td><td class="num">{{formatNum(r.total_emission,2)}} kg</td><td>{{r.source==='nl'?'自然语言':'表单'}}</td><td><span class="pipe-badge" :class="r.pipeline_status||'ok'">{{r.pipeline_status||'ok'}}</span></td><td class="num">{{dateTime(r.created_at)}}</td></tr></tbody></table></div></article></section>
+    <section v-if="tab==='exchange'"><div class="workspace-head"><div><p class="eyebrow">VIRTUAL CARBON MARKET</p><h1 data-od-id="exchange-title">碳资产交易工作台</h1><p>模拟碳信用挂单、成交与双余额结算。</p></div><span class="tag">账户 · {{balance.name}}</span></div><div class="balance-row"><div class="balance"><span>碳信用余额</span><strong>{{formatNum(balance.carbon_balance,2)}}</strong></div><div class="balance"><span>法币余额</span><strong>¥{{formatNum(balance.cash_balance,2)}}</strong></div><div class="balance"><span>最新成交价</span><strong>¥{{lastPrice}}</strong></div></div><div class="trade-grid"><article class="panel" data-od-id="order-form"><div class="panel-head"><div><h2>创建挂单</h2><p class="panel-sub">挂单后进入订单簿</p></div></div><div class="mode-switch"><button :class="{on:orderType==='buy'}" @click="orderType='buy'">买入</button><button :class="{on:orderType==='sell'}" @click="orderType='sell'">卖出</button></div><div class="field"><label>数量</label><input class="control" type="number" min="0" v-model.number="orderForm.amount" placeholder="碳信用单位"></div><div class="field"><label>单价 / 元</label><input class="control" type="number" min="0" v-model.number="orderForm.price" placeholder="68.50"></div><div class="form-actions"><span class="num">预计 ¥{{formatNum(orderTotal,2)}}</span><button class="primary" :disabled="busy" @click="placeOrder" data-od-id="submit-order">{{busy?'提交中…':(orderType==='buy'?'挂买单':'挂卖单')}}</button></div><div v-if="exErr" class="message error">{{exErr}}</div><div v-if="exMsg" class="message ok">{{exMsg}}</div></article><article class="panel" data-od-id="order-book"><div class="panel-head"><div><h2>市场深度</h2><p class="panel-sub">点击对手方订单全额成交</p></div><span class="tag">{{book.asks.length+book.bids.length}} 笔</span></div><div class="order-book"><div class="order-side"><h3 class="sell">卖盘 / ASK</h3><div class="depth-row" v-for="o in book.asks" :key="o.id"><span>¥{{o.price}}</span><span>{{o.quantity}}</span><button v-if="o.user_id!==myId" @click="takeOrder(o)">买入</button><span v-else>我的</span></div><div v-if="!book.asks.length" class="empty">暂无卖单</div></div><div class="order-side"><h3 class="buy">买盘 / BID</h3><div class="depth-row" v-for="o in book.bids" :key="o.id"><span>¥{{o.price}}</span><span>{{o.quantity}}</span><button v-if="o.user_id!==myId" @click="takeOrder(o)">卖出</button><span v-else>我的</span></div><div v-if="!book.bids.length" class="empty">暂无买单</div></div></div></article></div><article class="panel data-panel" data-od-id="trade-history"><div class="panel-head"><div><h2>最近成交</h2><p class="panel-sub">成交后余额与台账同步更新</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>成交编号</th><th>价格</th><th>数量</th><th>成交额</th><th>时间</th></tr></thead><tbody><tr v-for="t in trades" :key="t.id"><td class="num">{{t.id}}</td><td>¥{{formatNum(t.price,2)}}</td><td>{{t.quantity}}</td><td>¥{{formatNum(t.price*t.quantity,2)}}</td><td class="num">{{dateTime(t.created_at)}}</td></tr></tbody></table></div></article><article class="panel local-price-panel" data-od-id="local-carbon-price"><div class="panel-head"><div><h2>全球碳价行情</h2><p class="panel-sub">覆盖全球主要碳市场的价格与近 30 日走势</p></div><span class="tag">{{priceSourceLabel}}</span></div><div class="price-tools"><label class="panel-sub" for="price-region">市场</label><select id="price-region" class="control" v-model="priceRegion" @change="loadPriceDetail" data-od-id="price-region-select"><optgroup v-for="grp in priceGroups" :key="grp.name" :label="grp.name"><option v-for="m in grp.markets" :key="m.market_id" :value="m.market_id">{{m.name}}（{{m.unit}}）</option></optgroup></select><span class="panel-sub">更新于 {{priceUpdated}}</span></div><template v-if="priceDetail"><div class="price-quote"><strong class="price">{{formatNum(priceDetail.price,2)}} <small>{{priceDetail.unit}}</small></strong><span class="change" :class="priceDetail.change_pct>=0?'up':'down'">{{priceDetail.change_pct>=0?'▲':'▼'}} {{Math.abs(priceDetail.change_pct).toFixed(2)}}%</span></div><div class="price-range"><span>近30日高 {{formatNum(priceDetail.high,2)}}</span><span>近30日低 {{formatNum(priceDetail.low,2)}}</span><span>来源：{{priceDetail.source}}</span></div><svg class="price-chart-svg" viewBox="0 0 700 216" role="img" :aria-label="priceDetail.name+'近30日走势'"><g v-for="g in priceYGrid" :key="'g'+g.y"><line class="grid-line" x1="46" :y1="g.y" x2="686" :y2="g.y"/><text class="axis-label" x="40" :y="g.y" text-anchor="end" dominant-baseline="middle">{{g.label}}</text></g><g v-for="g in priceXGrid" :key="'x'+g.x"><text class="axis-label" :x="g.x" y="202" text-anchor="middle">{{g.label}}</text></g><line class="axis-line" x1="46" y1="16" x2="46" y2="186"/><line class="axis-line" x1="46" y1="186" x2="686" y2="186"/><polygon class="area-fill" :points="priceAreaPoints"/><polyline class="trend-line" :points="priceLinePoints"/><g v-if="pricePin" class="price-pin" :transform="'translate('+pricePin.x+','+pricePin.y+')'"><rect class="pin-bg" x="-34" y="-22" width="68" height="20" rx="4"/><text class="pin-text" text-anchor="middle" y="-7">{{pricePin.text}}</text></g><circle class="trend-halo" :cx="priceLastPoint[0]" :cy="priceLastPoint[1]" r="11"/><circle class="trend-halo thin" :cx="priceLastPoint[0]" :cy="priceLastPoint[1]" r="17"/><circle class="trend-dot" :cx="priceLastPoint[0]" :cy="priceLastPoint[1]" r="5"/></svg></template><div v-else class="empty">行情加载中…</div></article></section>
     <section v-if="tab==='points'"><div class="workspace-head"><div><p class="eyebrow">INCLUSIVE CARBON REWARDS</p><h1 data-od-id="points-title">碳普惠行动中心</h1><p>把日常低碳行为转化为即时积分反馈。</p></div><span class="tag">账户 · {{ptBalance.name}}</span></div><div class="points-grid"><article class="panel" data-od-id="behavior-checkin"><div class="panel-head"><div><h2>今日低碳任务</h2><p class="panel-sub">选择一项已完成的行为</p></div></div><div class="behavior-grid"><button class="behavior" v-for="b in behaviors" :key="b.key" :disabled="busy||b.demo" @click="checkin(b)" :data-od-id="'behavior-'+b.art"><div class="behavior-visual"><img :src="'assets/action-'+b.art+'-chibi.png'" :alt="b.label+'Q版低碳行动插画'" loading="lazy"></div><div class="behavior-copy"><strong>{{b.label}}</strong><span>{{b.demo?'待接入':'+'+b.points+' 积分'}}</span></div></button></div><div v-if="ptMsg" class="message ok">{{ptMsg}}</div><div v-if="ptErr" class="message error">{{ptErr}}</div></article><article class="panel panel-dark" data-od-id="points-balance"><p class="eyebrow">AVAILABLE POINTS</p><div class="points-total">{{formatNum(ptBalance.points_balance,0)}}</div><p class="panel-sub">积分可用于平台权益抵扣，兑换记录将写入台账。</p><div class="redeem"><input class="control" type="number" min="1" v-model.number="redeemAmount" placeholder="输入积分"><button class="primary" :disabled="busy" @click="redeem">确认抵扣</button></div></article></div><article class="panel data-panel" data-od-id="points-history"><div class="panel-head"><div><h2>积分流水</h2><p class="panel-sub">获得与消耗均保留时间凭证</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>行为说明</th><th>变动</th><th>类型</th><th>时间</th></tr></thead><tbody><tr v-for="p in points" :key="p.id"><td>{{p.description}}</td><td class="num" :class="p.points>0?'buy':'sell'">{{p.points>0?'+':''}}{{p.points}}</td><td>{{reasonLabel(p.reason)}}</td><td class="num">{{dateTime(p.created_at)}}</td></tr></tbody></table></div></article></section>
     <section v-if="tab==='ledger'"><div class="workspace-head"><div><p class="eyebrow">VERIFIABLE CARBON LEDGER</p><h1 data-od-id="ledger-title">碳凭证台账</h1><p>统一汇总账户、核算、交易和激励记录。</p></div><button class="primary no-print" @click="printPage" data-od-id="export-pdf">导出 PDF</button></div><template v-if="summary"><div class="ledger-stats"><div class="ledger-stat"><span>碳信用余额</span><strong>{{formatNum(summary.user.carbon_balance,1)}}</strong></div><div class="ledger-stat"><span>累计排放</span><strong>{{formatNum(summary.carbon.total_emission,1)}} kg</strong></div><div class="ledger-stat"><span>成交笔数</span><strong>{{summary.trade.trade_count}}</strong></div><div class="ledger-stat"><span>积分余额</span><strong>{{summary.points.balance}}</strong></div></div><div class="workspace-grid"><article class="panel" data-od-id="ledger-carbon"><div class="panel-head"><div><h2>核算凭证</h2><p class="panel-sub">{{summary.carbon.report_count}} 份报告</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>标题</th><th>周期</th><th>排放量</th><th>时间</th></tr></thead><tbody><tr v-for="r in summary.carbon.reports" :key="r.id"><td>{{r.title}}</td><td>{{r.period}}</td><td>{{r.total_emission}} kg</td><td class="num">{{dateTime(r.created_at)}}</td></tr></tbody></table></div></article><article class="panel panel-dark" data-od-id="ledger-account"><div class="panel-head"><div><h2>账户归属</h2><p class="panel-sub">当前凭证主体</p></div></div><div class="breakdown"><div class="break-row"><span>主体</span><span></span><b>{{summary.user.name}}</b></div><div class="break-row"><span>邮箱</span><span></span><b>{{summary.user.email||'未填写'}}</b></div><div class="break-row"><span>法币</span><span></span><b>¥{{formatNum(summary.user.cash_balance,2)}}</b></div><div class="break-row"><span>累计积分</span><span></span><b>{{summary.points.earned}}</b></div></div></article></div><article class="panel data-panel" data-od-id="ledger-trades"><div class="panel-head"><div><h2>交易凭证</h2><p class="panel-sub">成交总额 ¥{{formatNum(summary.trade.trade_volume,2)}}</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>成交编号</th><th>价格</th><th>数量</th><th>金额</th><th>时间</th></tr></thead><tbody><tr v-for="t in summary.trade.trades" :key="t.id"><td class="num">{{t.id}}</td><td>¥{{t.price}}</td><td>{{t.quantity}}</td><td>¥{{formatNum(t.price*t.quantity,2)}}</td><td class="num">{{dateTime(t.created_at)}}</td></tr></tbody></table></div></article></template></section>
   </div></main>
@@ -54,15 +178,949 @@
 <script>
 const {createApp}=Vue;
 createApp({
- data(){return{api:'http://localhost:8000',online:false,menuOpen:false,tab:'overview',busy:false,globalErr:'',chartMode:'emission',priceRegion:'北京',tabs:[{key:'overview',label:'碳数据',short:'首页'},{key:'tracker',label:'AI 核算',short:'核算'},{key:'exchange',label:'资产交易',short:'交易'},{key:'points',label:'碳普惠',short:'激励'},{key:'ledger',label:'凭证台账',short:'台账'}],overview:{total_calc:1,total_emission:71344,total_trade_count:1,total_trade_volume:2010,total_points:4605},emissionItems:[{category:'电力',emission:69720},{category:'交通',emission:1624}],calcMode:'nl',activityTypes:['用电','出行','餐饮','办公'],units:{用电:'度',出行:'km',餐饮:'餐',办公:'小时'},form:[{activity_type:'出行',amount:null,unit:''}],nlText:'',result:null,calcErr:'',reports:[{id:'def3ba8530c7',title:'2026年第一季度碳核算',period:'2026-Q1',total_emission:71344,source:'form',created_at:'2026-08-27T08:17:01'}],balance:{user_id:'0952c3c7ccf8',name:'绿色科技有限公司',carbon_balance:1170,cash_balance:102010},myId:'0952c3c7ccf8',book:{asks:[{id:'037636d685bf',user_id:'0952c3c7ccf8',price:68.5,quantity:100}],bids:[{id:'5072c80e0224',user_id:'0952c3c7ccf8',price:65,quantity:10}]},trades:[{id:'6598b1bd484f',price:67,quantity:30,created_at:'2026-08-27T08:17:21'}],orderType:'buy',orderForm:{amount:null,price:null},exErr:'',exMsg:'',ptBalance:{name:'绿色科技有限公司',points_balance:3625},behaviors:[{key:'walk_commute',label:'步行通勤',points:50,art:'walk'},{key:'cycling_demo',label:'骑行通勤',points:40,art:'bike',demo:true},{key:'public_transit',label:'公共交通出行',points:40,art:'bus'},{key:'recycle',label:'垃圾分类回收',points:30,art:'recycle'}],points:[{id:'7a7e1bf37548',reason:'low_carbon_travel',points:50,description:'打卡：步行通勤',created_at:'2026-08-27T08:25:09'},{id:'eca0e15d37d7',reason:'recycle',points:15,description:'打卡：自带水杯',created_at:'2026-08-27T08:25:09'},{id:'644b2dbaedda',reason:'redeem',points:-40,description:'积分抵扣',created_at:'2026-08-27T08:25:09'}],redeemAmount:null,ptErr:'',ptMsg:'',summary:{user:{name:'绿色科技有限公司',email:'demo@carbon.universe',carbon_balance:1170,cash_balance:102010},carbon:{report_count:1,total_emission:71344,reports:[{id:'def3ba8530c7',title:'2026年第一季度碳核算',period:'2026-Q1',total_emission:71344,created_at:'2026-08-27T08:17:01'}]},trade:{trade_count:1,trade_volume:2010,trades:[{id:'6598b1bd484f',price:67,quantity:30,created_at:'2026-08-27T08:17:21'}]},points:{balance:3625,earned:65,redeemed:40}}}},
- computed:{orderTotal(){return(Number(this.orderForm.amount)||0)*(Number(this.orderForm.price)||0)},lastPrice(){return this.trades[0]?this.formatNum(this.trades[0].price,2):'—'},emissionMax(){return Math.max(1,...this.emissionItems.map(x=>x.emission))},emissionTotal(){return this.emissionItems.reduce((s,x)=>s+x.emission,0)}},
- methods:{formatNum(v,d=0){return new Intl.NumberFormat('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}).format(Number(v)||0)},dateTime(v){return v?String(v).replace('T',' ').slice(0,16):'—'},unitHint(t){return this.units[t]||'单位'},barHeight(v){return Math.max(5,v/this.emissionMax*82)+'%'},share(v){return this.emissionTotal?Math.round(v/this.emissionTotal*100):0},reasonLabel(r){return({low_carbon_travel:'低碳出行',recycle:'循环回收',energy_saving:'节能',trade_reward:'交易激励',redeem:'兑换消耗'})[r]||r},async get(path){const r=await fetch(this.api+path);const d=await r.json();if(!r.ok)throw new Error(d.error||d.detail||'请求失败');return d},async post(path,body){const r=await fetch(this.api+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw new Error(d.error||d.detail||'请求失败');return d},
+ data(){return{api:'http://localhost:8000',online:false,menuOpen:false,tab:'overview',busy:false,globalErr:'',chartMode:'emission',priceRegion:'eu_ets',priceMarkets:[],priceSourceLabel:'演示数据',priceUpdated:'—',priceDetail:null,tabs:[{key:'overview',label:'碳数据',short:'首页'},{key:'tracker',label:'AI 核算',short:'核算'},{key:'exchange',label:'资产交易',short:'交易'},{key:'points',label:'碳普惠',short:'激励'},{key:'ledger',label:'凭证台账',short:'台账'}],overview:{total_calc:1,total_emission:71344,total_trade_count:1,total_trade_volume:2010,total_points:4605},emissionItems:[{category:'电力',emission:69720},{category:'交通',emission:1624}],calcMode:'nl',activityTypes:['用电','出行','餐饮','办公'],units:{用电:'度',出行:'km',餐饮:'餐',办公:'小时'},form:[{activity_type:'出行',amount:null,unit:''}],nlText:'',result:null,calcErr:'',reports:[{id:'def3ba8530c7',title:'2026年第一季度碳核算',period:'2026-Q1',total_emission:71344,source:'form',created_at:'2026-08-27T08:17:01'}],balance:{user_id:'0952c3c7ccf8',name:'绿色科技有限公司',carbon_balance:1170,cash_balance:102010},myId:'0952c3c7ccf8',book:{asks:[{id:'037636d685bf',user_id:'0952c3c7ccf8',price:68.5,quantity:100}],bids:[{id:'5072c80e0224',user_id:'0952c3c7ccf8',price:65,quantity:10}]},trades:[{id:'6598b1bd484f',price:67,quantity:30,created_at:'2026-08-27T08:17:21'}],orderType:'buy',orderForm:{amount:null,price:null},exErr:'',exMsg:'',ptBalance:{name:'绿色科技有限公司',points_balance:3625},behaviors:[{key:'walk_commute',label:'步行通勤',points:50,art:'walk'},{key:'cycling_demo',label:'骑行通勤',points:40,art:'bike',demo:true},{key:'public_transit',label:'公共交通出行',points:40,art:'bus'},{key:'recycle',label:'垃圾分类回收',points:30,art:'recycle'}],points:[{id:'7a7e1bf37548',reason:'low_carbon_travel',points:50,description:'打卡：步行通勤',created_at:'2026-08-27T08:25:09'},{id:'eca0e15d37d7',reason:'recycle',points:15,description:'打卡：自带水杯',created_at:'2026-08-27T08:25:09'},{id:'644b2dbaedda',reason:'redeem',points:-40,description:'积分抵扣',created_at:'2026-08-27T08:25:09'}],redeemAmount:null,ptErr:'',ptMsg:'',summary:{user:{name:'绿色科技有限公司',email:'demo@carbon.universe',carbon_balance:1170,cash_balance:102010},carbon:{report_count:1,total_emission:71344,reports:[{id:'def3ba8530c7',title:'2026年第一季度碳核算',period:'2026-Q1',total_emission:71344,created_at:'2026-08-27T08:17:01'}]},trade:{trade_count:1,trade_volume:2010,trades:[{id:'6598b1bd484f',price:67,quantity:30,created_at:'2026-08-27T08:17:21'}]},points:{balance:3625,earned:65,redeemed:40}}}},
+ computed:{orderTotal(){return(Number(this.orderForm.amount)||0)*(Number(this.orderForm.price)||0)},lastPrice(){return this.trades[0]?this.formatNum(this.trades[0].price,2):'—'},emissionMax(){return Math.max(1,...this.emissionItems.map(x=>x.emission))},emissionTotal(){return this.emissionItems.reduce((s,x)=>s+x.emission,0)},priceGroups(){const order=['中国','欧盟','美洲','亚太'];const g=[];for(const r of order){const arr=(this.priceMarkets||[]).filter(m=>m.region===r);if(arr.length)g.push({name:r,markets:arr})}return g},priceLinePoints(){if(!this.priceDetail)return'';return this.toPoints(this.priceDetail).map(p=>p.join(',')).join(' ')},priceAreaPoints(){if(!this.priceDetail)return'';const pts=this.toPoints(this.priceDetail);if(pts.length<2)return'';return[...pts,[686,186],[46,186]].map(p=>p.join(',')).join(' ')},priceLastPoint(){if(!this.priceDetail)return[0,0];const p=this.toPoints(this.priceDetail);return p.length?p[p.length-1]:[0,0]},priceYGrid(){const st=this.priceStats();if(!st)return[];const PT=16,ph=170;return[0,1,2,3,4].map(k=>{const v=st.min+st.span*k/4,y=Number((PT+ph-((v-st.min)/st.span)*ph).toFixed(1));return{y,label:this.formatNum(v,2)}})},priceXGrid(){const st=this.priceStats();if(!st)return[];const PL=46,pw=640;return[0,1,2,3,4,5].map(k=>{const i=Math.round(st.n*k/5),x=Number((PL+i/st.n*pw).toFixed(1)),day=st.n-i;return{x,label:day===0?'Today':day+'d'}})},pricePin(){if(!this.priceDetail)return null;const p=this.priceLastPoint,x=Math.min(652,Math.max(80,p[0]));return{x,y:Math.max(42,p[1]-16),text:this.formatNum(this.priceDetail.price,2)}}},
+ methods:{priceStats(){const s=(this.priceDetail&&this.priceDetail.series)||[];if(s.length<2)return null;const lo=Math.min(...s),hi=Math.max(...s),raw=(hi-lo)||1,pad=raw*0.12;return{min:lo-pad,max:hi+pad,span:raw+2*pad,n:s.length-1}},formatNum(v,d=0){return new Intl.NumberFormat('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d}).format(Number(v)||0)},dateTime(v){return v?String(v).replace('T',' ').slice(0,16):'—'},unitHint(t){return this.units[t]||'单位'},barHeight(v){return Math.max(5,v/this.emissionMax*82)+'%'},share(v){return this.emissionTotal?Math.round(v/this.emissionTotal*100):0},reasonLabel(r){return({low_carbon_travel:'低碳出行',recycle:'循环回收',energy_saving:'节能',trade_reward:'交易激励',redeem:'兑换消耗'})[r]||r},async get(path){const r=await fetch(this.api+path);const d=await r.json();if(!r.ok)throw new Error(d.error||d.detail||'请求失败');return d},async post(path,body){const r=await fetch(this.api+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw new Error(d.error||d.detail||'请求失败');return d},
   go(k){this.tab=k;this.menuOpen=false;this.globalErr='';window.scrollTo(0,0);this.load()},async refresh(){this.globalErr='';try{await this.get('/api/health');this.online=true;await this.load()}catch(e){this.online=false;this.globalErr=this.tab==='overview'?'':'当前展示 README 中已有的演示数据；启动 FastAPI 后将自动切换为实时模式。'}},async load(){if(!this.online)return;try{if(this.tab==='overview')this.overview=await this.get('/api/overview');if(this.tab==='tracker')this.reports=await this.get('/api/carbon/reports');if(this.tab==='exchange')await this.loadExchange();if(this.tab==='points')await this.loadPoints();if(this.tab==='ledger')this.summary=await this.get('/api/export/summary')}catch(e){this.globalErr=e.message}},
   addRow(){this.form.push({activity_type:'用电',amount:null,unit:''})},removeRow(i){if(this.form.length>1)this.form.splice(i,1)},async submitForm(){const items=this.form.filter(f=>f.amount>0).map(f=>({activity_type:f.activity_type,amount:f.amount,unit:f.unit||null}));if(!items.length){this.calcErr='请至少填写一项有效活动。';return}await this.runCalc({mode:'form',items})},async submitNl(){if(!this.nlText.trim()){this.calcErr='请先输入包含活动与数量的描述。';return}await this.runCalc({mode:'nl',text:this.nlText})},async runCalc(payload){if(!this.online){this.calcErr='请先启动后端服务。';return}this.busy=true;this.calcErr='';try{this.result=await this.post('/api/carbon/calculate',payload);this.reports=await this.get('/api/carbon/reports');this.emissionItems=this.result.items.map(x=>({category:x.category,emission:x.emission}))}catch(e){this.calcErr=e.message}finally{this.busy=false}},
-  async loadExchange(){this.balance=await this.get('/api/exchange/balance');this.myId=this.balance.user_id;this.book=await this.get('/api/exchange/orders');this.trades=await this.get('/api/exchange/trades')},async placeOrder(){this.exErr='';this.exMsg='';if(!this.online){this.exErr='请先启动后端服务。';return}if(!(this.orderForm.amount>0)||!(this.orderForm.price>0)){this.exErr='数量与单价必须大于 0。';return}this.busy=true;try{await this.post('/api/exchange/orders',{type:this.orderType,amount:this.orderForm.amount,price:this.orderForm.price});this.exMsg=(this.orderType==='buy'?'买单':'卖单')+'已进入订单簿。';this.orderForm={amount:null,price:null};await this.loadExchange()}catch(e){this.exErr=e.message}finally{this.busy=false}},async takeOrder(o){if(!this.online){this.exErr='请先启动后端服务。';return}this.busy=true;try{await this.post('/api/exchange/match',{order_id:o.id});this.exMsg='成交成功：¥'+o.price+' × '+o.quantity;await this.loadExchange()}catch(e){this.exErr=e.message}finally{this.busy=false}},
+  async loadExchange(){this.balance=await this.get('/api/exchange/balance');this.myId=this.balance.user_id;this.book=await this.get('/api/exchange/orders');this.trades=await this.get('/api/exchange/trades');await this.loadPrices()},async loadPrices(){let list=null;if(this.online){try{list=await this.get('/api/exchange/prices')}catch(e){list=null}}if(!list)list=this.demoPriceList();this.applyPriceList(list)},applyPriceList(list){this.priceMarkets=(list&&list.markets)||[];this.priceSourceLabel=(list&&list.source_label)||(this.online?'实时行情':'演示数据');this.priceUpdated=((list&&list.updated_at)||'—').toString().replace('T',' ').slice(0,16);if(this.priceMarkets.length&&!this.priceMarkets.some(m=>m.market_id===this.priceRegion))this.priceRegion=this.priceMarkets[0].market_id;this.loadPriceDetail()},async loadPriceDetail(){const id=this.priceRegion;if(!id){this.priceDetail=null;return}if(this.online){try{this.priceDetail=await this.get('/api/exchange/prices?market='+encodeURIComponent(id));return}catch(e){}}this.priceDetail=this.demoDetail(id)},toPoints(d){const s=(d&&d.series)||[];if(s.length<2)return[];const lo=Math.min(...s),hi=Math.max(...s),raw=(hi-lo)||1,pad=raw*0.12,min=lo-pad,span=raw+2*pad,W=700,H=216,PL=46,PT=16,PR=14,PB=30,pw=W-PL-PR,ph=H-PT-PB;return s.map((v,i)=>[Number((PL+i/(s.length-1)*pw).toFixed(1)),Number((PT+ph-((v-min)/span)*ph).toFixed(1))])},demoPriceList(){const markets=this.demoPriceMarkets().map(({market_id,name,region,ccy,unit,price})=>({market_id,name,region,ccy,unit,price,change_pct:0}));return{source:'local',source_label:'演示数据（内置兜底）',updated_at:new Date().toISOString(),markets}},demoDetail(id){const m=this.demoPriceMarkets().find(x=>x.market_id===id);if(!m)return null;const series=this.demoSeries(m.price);return{...m,price:series[29],change_pct:Number(((series[29]/series[28]-1)*100).toFixed(2)),high:Math.max(...series),low:Math.min(...series),source:'演示数据（内置兜底）',updated_at:this.priceUpdated,series}},demoSeries(base){const seed=[0.972,1.018,0.993,1.024,0.981,1.035,0.966,1.021,1.008,0.979,1.015,1.031,0.988,1.012,1.006];let v=base*0.88;const arr=[];for(let i=0;i<30;i++){v*=seed[i%seed.length];arr.push(Number(v.toFixed(2)))}const sc=base/arr[29];for(let i=0;i<30;i++)arr[i]=Number((arr[i]*sc).toFixed(2));arr[29]=base;return arr},demoPriceMarkets(){return[{market_id:'cn_cea',name:'中国全国碳市场（CEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:96.5},{market_id:'cn_bj',name:'北京碳排放权（BEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:105.8},{market_id:'cn_sh',name:'上海碳排放权（SHEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:76.4},{market_id:'cn_gd',name:'广东碳排放权（GDEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:64.2},{market_id:'cn_sz',name:'深圳碳排放权（SZEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:61.5},{market_id:'cn_hb',name:'湖北碳排放权（HBEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:43.1},{market_id:'cn_cq',name:'重庆碳排放权（CQEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:46.7},{market_id:'cn_tj',name:'天津碳排放权（TJEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:35.9},{market_id:'cn_fj',name:'福建碳排放权（FJEA）',region:'中国',ccy:'CNY',unit:'元/吨',price:28.6},{market_id:'eu_ets',name:'欧盟碳配额（EUA）',region:'欧盟',ccy:'EUR',unit:'欧元/吨',price:68.5},{market_id:'uk_ets',name:'英国碳排放权（UKA）',region:'欧盟',ccy:'GBP',unit:'英镑/吨',price:42},{market_id:'us_ca',name:'美国加州配额（CCA）',region:'美洲',ccy:'USD',unit:'美元/吨',price:39.8},{market_id:'kr_kau',name:'韩国碳排放权（KAU）',region:'亚太',ccy:'KRW',unit:'韩元/吨',price:9550},{market_id:'nz_nzu',name:'新西兰碳单位（NZU）',region:'亚太',ccy:'NZD',unit:'纽元/吨',price:63.4}]},async placeOrder(){this.exErr='';this.exMsg='';if(!this.online){this.exErr='请先启动后端服务。';return}if(!(this.orderForm.amount>0)||!(this.orderForm.price>0)){this.exErr='数量与单价必须大于 0。';return}this.busy=true;try{await this.post('/api/exchange/orders',{type:this.orderType,amount:this.orderForm.amount,price:this.orderForm.price});this.exMsg=(this.orderType==='buy'?'买单':'卖单')+'已进入订单簿。';this.orderForm={amount:null,price:null};await this.loadExchange()}catch(e){this.exErr=e.message}finally{this.busy=false}},async takeOrder(o){if(!this.online){this.exErr='请先启动后端服务。';return}this.busy=true;try{await this.post('/api/exchange/match',{order_id:o.id});this.exMsg='成交成功：¥'+o.price+' × '+o.quantity;await this.loadExchange()}catch(e){this.exErr=e.message}finally{this.busy=false}},
   async loadPoints(){this.ptBalance=await this.get('/api/points/balance');const raw=await this.get('/api/points/behaviors');const art={walk_commute:'walk',public_transit:'bus',recycle:'recycle'};this.behaviors=raw.filter(b=>art[b.key]).map(b=>({...b,art:art[b.key]}));this.behaviors.splice(1,0,{key:'cycling_demo',label:'骑行通勤',points:40,art:'bike',demo:true});this.points=await this.get('/api/points/history')},async checkin(b){if(b.demo){this.ptErr='骑行打卡接口待接入，当前仅展示模块界面。';return}if(!this.online){this.ptErr='请先启动后端服务。';return}this.busy=true;this.ptErr='';this.ptMsg='';try{await this.post('/api/points/checkin',{behavior:b.key});this.ptMsg='已记录“'+b.label+'”，获得 '+b.points+' 积分。';await this.loadPoints()}catch(e){this.ptErr=e.message}finally{this.busy=false}},async redeem(){if(!this.online){this.ptErr='请先启动后端服务。';return}if(!(this.redeemAmount>0)){this.ptErr='请输入有效积分。';return}this.busy=true;this.ptErr='';try{await this.post('/api/points/redeem',{points:this.redeemAmount});this.ptMsg='已抵扣 '+this.redeemAmount+' 积分。';this.redeemAmount=null;await this.loadPoints()}catch(e){this.ptErr=e.message}finally{this.busy=false}},printPage(){window.print()}
  },mounted(){this.refresh()}
 }).mount('#app');
+</script>
+
+<!-- ================= 全球碳观测 · 悬浮地球入口 ================= -->
+<button class="globe-fab" id="globeFab" title="全球碳观测" aria-label="打开全球碳观测">
+  <span class="ring"></span>
+  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#eaf4ff" stroke-width="1.1" aria-hidden="true">
+    <circle cx="12" cy="12" r="9"/>
+    <ellipse cx="12" cy="12" rx="4" ry="9"/>
+    <path d="M3 12h18"/>
+  </svg>
+</button>
+
+<!-- 全屏观测容器：同一个地图组件承载「碳追踪 / 碳价格」两种数据 -->
+<div class="globe-overlay" id="globeOverlay" role="dialog" aria-modal="true" aria-label="全球碳观测">
+  <!-- 顶栏：只放模式双选切换，不跳转页面 -->
+  <div class="globe-top">
+    <span class="globe-brand">🌍 全球碳观测</span>
+    <div class="mode-toggle" id="modeToggle" role="tablist" aria-label="数据图层">
+      <button type="button" data-mode="trace" class="on" role="tab" aria-selected="true">碳追踪</button>
+      <button type="button" data-mode="price" role="tab" aria-selected="false">碳价格</button>
+    </div>
+    <span class="spacer"></span>
+    <div class="view-toggle" id="viewToggle" role="group" aria-label="底图视图">
+      <button type="button" data-view="3d" class="on" title="3D 地球底图（演示效果）">3D 地球</button>
+      <button type="button" data-view="2d" title="普通 2D 底图（降级方案）">2D 底图</button>
+    </div>
+    <button class="globe-close" id="globeClose" aria-label="关闭">✕</button>
+  </div>
+
+  <!-- 筛选栏：两种模式共用搜索与时间轴，维度筛选随模式切换 -->
+  <div class="globe-filters">
+    <div class="globe-search">
+      <span class="ico">🔍</span>
+      <input id="globeSearch" type="search" placeholder="搜索项目 / 市场 / 国家" aria-label="搜索项目、市场或国家" autocomplete="off">
+      <button class="clear" id="globeSearchClear" aria-label="清空搜索" hidden>×</button>
+    </div>
+    <select class="globe-select" id="fCountry" aria-label="国家或地区筛选"></select>
+    <select class="globe-select" id="fIndustry" aria-label="行业筛选"></select>
+    <select class="globe-select" id="fMarket" aria-label="市场筛选" hidden></select>
+    <select class="globe-select" id="fMechanism" aria-label="机制筛选" hidden></select>
+    <div class="filter-tag" id="filterSummary" hidden></div>
+    <div class="timeline" id="timeline">
+      <span class="timeline-label">统计年份</span>
+      <button class="timeline-play" id="timelinePlay" title="按年份自动播放">▶</button>
+    </div>
+  </div>
+
+  <!-- 主体：地图舞台 + 共用详情侧栏 -->
+  <div class="globe-body">
+    <div class="globe-stage">
+      <div id="globeChart"></div>
+      <div class="globe-legend" id="globeLegend" hidden></div>
+      <div class="globe-hint" id="globeHint">🖱 拖拽旋转 · 滚轮缩放 · 点击点位查看详情</div>
+      <div class="globe-loading" id="globeLoading">正在加载本地 JSON 快照…</div>
+    </div>
+    <aside class="globe-side" aria-label="数据详情面板">
+      <div class="side-block">
+        <h3 class="side-title">数据详情 <b id="detailMode">碳追踪</b></h3>
+        <div id="detailSlot"></div>
+      </div>
+      <div class="side-block">
+        <h3 class="side-title" id="trendTitle">排放趋势</h3>
+        <div id="trendChart"></div>
+      </div>
+      <div class="side-block">
+        <h3 class="side-title">排行榜 <b id="rankCount">0</b></h3>
+        <div class="rank-list" id="rankList"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script src="assets/lib/echarts.min.js"></script>
+<script src="assets/lib/echarts-gl.min.js" onload="window.__ECHARTS_GL_LOADED__=true"></script>
+<script>
+/* =============================================================================
+   全球碳观测地图组件
+   · 同一个地图容器，顶部按钮切换「碳追踪 / 碳价格」两种数据，不跳转新页面
+   · 碳追踪：项目点位，柱体高度 + 发光点 + 热力颜色表现排放规模；国家/年份/行业筛选
+   · 碳价格：国家或区域色阶表现价格；市场/年份/机制筛选；联动价格曲线
+   · 两种模式共用：搜索框、时间轴、图例、详情卡、排行榜，三者联动
+   · 首版读取本地 JSON 快照，不在前端直接请求外部平台；保留 2D 底图作为降级方案
+   ============================================================================= */
+(function () {
+  'use strict';
+
+  var DATA = {
+    trace: { url: 'data/emission_assets.json', doc: null },
+    price: { url: 'data/carbon_prices.json', doc: null }
+  };
+
+  var COLOR_TRACE = ['#39d98a', '#a8e05f', '#ffd257', '#ff8a5c', '#ff5d5d'];
+  var COLOR_PRICE = ['#1b4f8f', '#2f8bff', '#5ad1ff', '#ffe066', '#ff8a5c'];
+  var BAR_MAX_H = 22;   /* 3D 柱体最大高度（globe 半径 100 的刻度） */
+
+  /* world.json 中缺失的行政区做别名回退，保证 2D 区域着色不丢数据 */
+  var COUNTRY_ALIAS = { 'Taiwan': 'China' };
+  var EU_MEMBERS = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Rep.', 'Denmark',
+    'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia',
+    'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia',
+    'Slovenia', 'Spain', 'Sweden'];
+
+  var state = {
+    mode: 'trace', view: '3d', year: null,
+    country: '__all__', industry: '__all__', market: '__all__', mechanism: '__all__',
+    keyword: '', selectedId: null, playing: false
+  };
+
+  var chart = null, trendChart = null, worldGeo = null, worldPromise = null, playTimer = null;
+  var chartBound = false;
+  var E = {};
+
+  ['globeFab', 'globeOverlay', 'globeChart', 'globeLoading', 'globeClose', 'globeHint', 'globeLegend',
+    'modeToggle', 'viewToggle', 'globeSearch', 'globeSearchClear', 'fCountry', 'fIndustry', 'fMarket',
+    'fMechanism', 'filterSummary', 'timeline', 'timelinePlay', 'detailSlot', 'detailMode', 'trendTitle',
+    'trendChart', 'rankList', 'rankCount'
+  ].forEach(function (id) { E[id] = document.getElementById(id); });
+
+  /* ------------------------------ 工具函数 ------------------------------ */
+  function fmt(v, d) {
+    if (v === null || v === undefined || isNaN(v)) return '—';
+    return new Intl.NumberFormat('zh-CN', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }).format(Number(v));
+  }
+  function esc(s) {
+    return String(s === null || s === undefined ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function hex2rgb(h) {
+    return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+  }
+  function mixHex(a, b, t) {
+    var x = hex2rgb(a), y = hex2rgb(b);
+    return 'rgb(' + Math.round(x[0] + (y[0] - x[0]) * t) + ',' +
+      Math.round(x[1] + (y[1] - x[1]) * t) + ',' + Math.round(x[2] + (y[2] - x[2]) * t) + ')';
+  }
+  function scaleColor(v, min, max) {
+    var t = max > min ? (v - min) / (max - min) : 0;
+    t = Math.max(0, Math.min(1, t));
+    var colors = state.mode === 'trace' ? COLOR_TRACE : COLOR_PRICE;
+    var seg = colors.length - 1, i = Math.min(seg - 1, Math.floor(t * seg));
+    return mixHex(colors[i], colors[i + 1], t * seg - i);
+  }
+  function valOf(r) { return r.value; }
+  function loading(html) { E.globeLoading.innerHTML = html; E.globeLoading.style.display = 'grid'; }
+  function hideLoading() { E.globeLoading.style.display = 'none'; }
+
+  /* ------------------------------ 数据加载 ------------------------------ */
+  function loadDoc(mode) {
+    if (DATA[mode].doc) return Promise.resolve(DATA[mode].doc);
+    return fetch(DATA[mode].url).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function (d) { DATA[mode].doc = d; return d; });
+  }
+  function ensureWorld() {
+    if (worldGeo) return Promise.resolve(worldGeo);
+    if (!worldPromise) {
+      worldPromise = fetch('data/world.json').then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }).then(function (g) { echarts.registerMap('world', g); worldGeo = g; return g; });
+    }
+    return worldPromise;
+  }
+  function doc() { return DATA[state.mode].doc; }
+
+  /* --------------------------- 筛选与派生数据 --------------------------- */
+  function filtered() {
+    var d = doc();
+    if (!d) return [];
+    var kw = state.keyword.trim().toLowerCase();
+    if (state.mode === 'trace') {
+      return d.assets.filter(function (a) {
+        if (state.country !== '__all__' && a.country !== state.country) return false;
+        if (state.industry !== '__all__' && a.industry !== state.industry) return false;
+        if (a.emissions[state.year] === null || a.emissions[state.year] === undefined) return false;
+        if (kw && (a.name + a.country + a.industry).toLowerCase().indexOf(kw) < 0) return false;
+        return true;
+      }).map(function (a) {
+        return {
+          id: a.id, name: a.name, sub: a.country + ' · ' + a.industry,
+          lat: a.lat, lon: a.lon, value: a.emissions[state.year], raw: a
+        };
+      });
+    }
+    return d.markets.filter(function (m) {
+      if (state.country !== '__all__' && m.country !== state.country) return false;
+      if (state.market !== '__all__' && m.id !== state.market) return false;
+      if (state.mechanism !== '__all__' && m.mechanism !== state.mechanism) return false;
+      if (m.prices_usd[state.year] === null || m.prices_usd[state.year] === undefined) return false;
+      if (kw && (m.market + m.country + m.mechanism + m.currency).toLowerCase().indexOf(kw) < 0) return false;
+      return true;
+    }).map(function (m) {
+      return {
+        id: m.id, name: m.market, sub: m.country + ' · ' + m.mechanism,
+        lat: m.lat, lon: m.lon, value: m.prices_usd[state.year],
+        local: m.prices_local[state.year], coverage: m.coverage, raw: m
+      };
+    });
+  }
+
+  /* 区域聚合：碳价格模式用于国家/区域着色，同一国家多个市场取覆盖率最高者 */
+  function regionData(rows) {
+    var map = {};
+    rows.forEach(function (r) {
+      var names = r.raw.country_en ? [r.raw.country_en] : EU_MEMBERS;
+      names.forEach(function (n) {
+        n = COUNTRY_ALIAS[n] || n;
+        if (!map[n] || (r.coverage || 0) > (map[n].coverage || 0)) {
+          map[n] = { name: n, value: r.value, coverage: r.coverage, market: r.name };
+        }
+      });
+    });
+    return Object.keys(map).map(function (k) { return map[k]; });
+  }
+
+  /* ------------------------------ 地图渲染 ------------------------------ */
+  function renderChart(rows) {
+    var isTrace = state.mode === 'trace';
+    var maxV = Math.max.apply(null, rows.map(valOf).concat([1]));
+    var minV = Math.min.apply(null, rows.map(valOf).concat([0]));
+    var option = state.view === '3d' && hasGlobe()
+      ? buildGlobe(rows, minV, maxV)
+      : buildFlat(rows, minV, maxV);
+    chart.setOption(option, true);
+    renderLegend(minV, maxV);
+
+    /* 恢复选中态高亮 */
+    var idx = -1;
+    rows.forEach(function (r, i) { if (r.id === state.selectedId) idx = i; });
+    if (idx >= 0) {
+      chart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: idx });
+      E.globeHint.textContent = '已定位：' + rows[idx].name + '　·　点击其他点位切换';
+    } else {
+      E.globeHint.textContent = isTrace
+        ? '柱体高度 = 排放规模　·　点击点位查看项目详情'
+        : '区域颜色 = 碳价水平　·　点击点位查看市场详情';
+    }
+  }
+
+  /* echarts-gl 是否可用；不可用时自动回退到 2D 底图 */
+  function hasGlobe() { return !!window.__ECHARTS_GL_LOADED__; }
+
+  /* --- 3D 地球底图 --- */
+  function buildGlobe(rows, minV, maxV) {
+    var isTrace = state.mode === 'trace';
+    var series = [];
+
+    if (isTrace) {
+      /* 柱体高度 + 热力颜色表现排放规模 */
+      series.push({
+        type: 'bar3D', name: '排放规模', coordinateSystem: 'globe',
+        shading: 'lambert', barSize: 0.85, minHeight: 0.35,
+        bevelSize: 0.25, bevelSmoothness: 2,
+        itemStyle: { opacity: 0.95 },
+        emphasis: { itemStyle: { opacity: 1 } },
+        data: rows.map(function (r) {
+          var h = maxV > 0 ? (r.value / maxV) * BAR_MAX_H : 1;
+          return { value: [r.lon, r.lat, h], row: r };
+        })
+      });
+      /* 柱顶发光点 */
+      series.push({
+        type: 'effectScatter3D', name: '排放点位', coordinateSystem: 'globe',
+        blendMode: 'lighter', zlevel: 2,
+        rippleEffect: { brushType: 'stroke', scale: 3.2, period: 4 },
+        label: { show: false },
+        itemStyle: { opacity: 0.95 },
+        data: rows.map(function (r) {
+          var h = maxV > 0 ? (r.value / maxV) * BAR_MAX_H : 1;
+          return {
+            value: [r.lon, r.lat, h], row: r,
+            symbolSize: Math.max(4, Math.pow(maxV > 0 ? r.value / maxV : 0, 0.6) * 11)
+          };
+        })
+      });
+    } else {
+      /* 国家 / 区域色阶：大尺寸半透明色斑，大小对应机制覆盖率 */
+      series.push({
+        type: 'scatter3D', name: '区域碳价', coordinateSystem: 'globe',
+        blendMode: 'lighter', zlevel: 1,
+        itemStyle: { opacity: 0.42 },
+        label: { show: false },
+        data: rows.map(function (r) {
+          return {
+            value: [r.lon, r.lat, r.value], row: r,
+            symbolSize: 16 + ((r.coverage || 20) / 100) * 30
+          };
+        })
+      });
+      /* 具体市场点位 */
+      series.push({
+        type: 'effectScatter3D', name: '碳市场', coordinateSystem: 'globe',
+        blendMode: 'lighter', zlevel: 3,
+        symbolSize: 7,
+        rippleEffect: { brushType: 'stroke', scale: 3, period: 4 },
+        label: { show: false },
+        itemStyle: { opacity: 1 },
+        data: rows.map(function (r) { return { value: [r.lon, r.lat, r.value], row: r }; })
+      });
+    }
+
+    return {
+      backgroundColor: 'transparent',
+      tooltip: { confine: true, formatter: tipFormatter },
+      visualMap: {
+        show: false, dimension: 2, min: isTrace ? 0 : minV, max: isTrace ? BAR_MAX_H : maxV,
+        inRange: { color: isTrace ? COLOR_TRACE : COLOR_PRICE },
+        seriesIndex: [0, 1]
+      },
+      globe: {
+        baseColor: '#08223f', shading: 'lambert', environment: 'auto',
+        light: { ambient: { intensity: 0.62 }, main: { intensity: 1.15 } },
+        atmosphere: { show: true, color: '#4aa0ff', glowPower: 60 },
+        viewControl: {
+          autoRotate: !state.selectedId, autoRotateSpeed: 5,
+          distance: 155, minDistance: 80, maxDistance: 240, alpha: 22, beta: 20
+        },
+        postEffect: { enable: true, bloom: { enable: true, bloomIntensity: 0.16 } },
+        temporalSuperSampling: { enable: true }
+      },
+      series: series
+    };
+  }
+
+  /* --- 2D 平面底图（降级方案） --- */
+  function buildFlat(rows, minV, maxV) {
+    var isTrace = state.mode === 'trace';
+    var geo = {
+      map: 'world', roam: true, zoom: 1.15, center: [12, 18],
+      scaleLimit: { min: 1, max: 12 },
+      itemStyle: { areaColor: '#0e2a4d', borderColor: 'rgba(120,180,255,.32)', borderWidth: 0.6 },
+      emphasis: { itemStyle: { areaColor: '#1a4778' }, label: { show: false } },
+      silent: false
+    };
+    var series = [];
+
+    if (isTrace) {
+      series.push({
+        type: 'effectScatter', name: '排放点位', coordinateSystem: 'geo', geoIndex: 0,
+        zlevel: 3, rippleEffect: { brushType: 'stroke', scale: 3, period: 4 },
+        label: { show: false },
+        itemStyle: { opacity: 0.92, shadowBlur: 10, shadowColor: 'rgba(90,209,255,.6)' },
+        data: rows.map(function (r) {
+          return {
+            value: [r.lon, r.lat, r.value], row: r, name: r.name,
+            symbolSize: Math.max(5, Math.pow(r.value / (maxV || 1), 0.6) * 22)
+          };
+        })
+      });
+    } else {
+      /* 国家或区域色阶（choropleth） */
+      series.push({
+        type: 'map', name: '区域碳价', geoIndex: 0, map: 'world',
+        itemStyle: { areaColor: '#0e2a4d', borderColor: 'rgba(120,180,255,.3)', borderWidth: 0.6 },
+        emphasis: { itemStyle: { areaColor: '#1a4778' }, label: { show: false } },
+        data: regionData(rows)
+      });
+      series.push({
+        type: 'effectScatter', name: '碳市场', coordinateSystem: 'geo', geoIndex: 0,
+        zlevel: 3, rippleEffect: { brushType: 'stroke', scale: 3, period: 4 },
+        symbolSize: 8,
+        label: { show: false },
+        itemStyle: { color: '#eaf6ff', opacity: 0.95, shadowBlur: 10, shadowColor: 'rgba(90,209,255,.8)' },
+        data: rows.map(function (r) { return { value: [r.lon, r.lat, r.value], row: r, name: r.name }; })
+      });
+    }
+
+    return {
+      backgroundColor: 'transparent',
+      tooltip: { confine: true, formatter: tipFormatter },
+      visualMap: {
+        show: false, min: minV, max: maxV, dimension: isTrace ? 2 : undefined,
+        inRange: { color: isTrace ? COLOR_TRACE : COLOR_PRICE },
+        seriesIndex: isTrace ? [0] : [0]
+      },
+      geo: geo,
+      series: series
+    };
+  }
+
+  function tipFormatter(params) {
+    var r = params.data && params.data.row;
+    if (!r) {
+      if (params.componentType === 'series' && params.seriesType === 'map') {
+        return '<b style="color:#8fd4ff">' + esc(params.name) + '</b><br/>碳价：<b>' +
+          fmt(params.value, 1) + '</b> $/tCO₂e<br/>' +
+          '<span style="color:#9fc3e8">统计年份：' + state.year + '</span>';
+      }
+      return '';
+    }
+    var isTrace = state.mode === 'trace';
+    var d = doc();
+    var src = isTrace ? d.source : d.sources.map(function (s) { return s.name; }).join(' / ');
+    if (isTrace) {
+      return '<b style="color:#8fd4ff">' + esc(r.name) + '</b><br/>' +
+        '行业：' + esc(r.raw.industry) + '　地区：' + esc(r.raw.country) + '<br/>' +
+        '年排放：<b>' + fmt(r.value) + '</b> 万 tCO₂e（' + state.year + ' 年）<br/>' +
+        '<span style="color:#9fc3e8">来源：' + esc(src) + '<br/>统计周期：' + esc(r.raw.period) +
+        '<br/>发布时间：' + esc(r.raw.published_at) + '<br/>最后同步：' + esc(r.raw.synced_at) + '</span>';
+    }
+    return '<b style="color:#8fd4ff">' + esc(r.name) + '</b><br/>' +
+      '地区：' + esc(r.raw.country) + '　机制：' + esc(r.raw.mechanism) + '<br/>' +
+      '碳价：<b>' + fmt(r.value, 1) + '</b> $/tCO₂e（' + fmt(r.local, 2) + ' ' + esc(r.raw.currency) + '）<br/>' +
+      '覆盖率：' + esc(r.raw.coverage) + '%<br/>' +
+      '<span style="color:#9fc3e8">来源：' + esc(src) + '<br/>统计周期：' + esc(r.raw.period) +
+      '<br/>发布时间：' + esc(r.raw.published_at) + '<br/>最后同步：' + esc(r.raw.synced_at) + '</span>';
+  }
+
+  /* ------------------------------ 共用图例 ------------------------------ */
+  function renderLegend(minV, maxV) {
+    var isTrace = state.mode === 'trace';
+    var colors = isTrace ? COLOR_TRACE : COLOR_PRICE;
+    var d1 = isTrace ? 0 : 1;
+    E.globeLegend.innerHTML =
+      '<div class="legend-title">' + (isTrace ? '排放规模 · 万 tCO₂e/年' : '碳价水平 · $/tCO₂e') + '</div>' +
+      '<div class="legend-bar" style="background:linear-gradient(90deg,' + colors.join(',') + ')"></div>' +
+      '<div class="legend-ticks"><span>' + fmt(minV, d1) + '</span><span>' + fmt(maxV, d1) + '</span></div>' +
+      '<div class="legend-note">' + (isTrace
+        ? '柱体高度、光点大小与颜色共同表示项目年排放规模，颜色越暖代表排放越高。'
+        : '区域／光斑颜色表示该国或区域的碳价水平，光斑大小对应机制覆盖率。') + '</div>' +
+      '<div class="legend-dot-row"><i style="background:' + (isTrace ? '#ffd257' : '#eaf6ff') + '"></i>' +
+      (isTrace ? '点位 = 单个排放源项目' : '点位 = 具体碳市场机制') + '</div>';
+    E.globeLegend.hidden = false;
+  }
+
+  /* ------------------------------ 详情卡 ------------------------------ */
+  function renderDetail(rows) {
+    var isTrace = state.mode === 'trace';
+    E.detailMode.textContent = isTrace ? '碳追踪' : '碳价格';
+    var row = null;
+    rows.forEach(function (r) { if (r.id === state.selectedId) row = r; });
+
+    if (!row) {
+      E.detailSlot.innerHTML = '<div class="side-empty">尚未选择数据<br/>点击地图点位或排行榜条目查看详情</div>' +
+        '<p class="side-hint">当前筛选共 ' + rows.length + ' 条记录，' +
+        (isTrace ? '合计排放 ' + fmt(rows.reduce(function (s, r) { return s + r.value; }, 0)) + ' 万 tCO₂e。'
+          : '平均碳价 ' + fmt(rows.length ? rows.reduce(function (s, r) { return s + r.value; }, 0) / rows.length : 0, 1) + ' $/tCO₂e。') +
+        '</p>';
+      return;
+    }
+
+    var raw = row.raw, d = doc();
+    var prevYear = String(Number(state.year) - 1);
+    var prev = isTrace ? raw.emissions[prevYear] : raw.prices_usd[prevYear];
+    var cur = row.value;
+    var delta = (prev === null || prev === undefined || !prev) ? null : (cur - prev) / prev * 100;
+    var deltaCls = delta === null ? 'flat' : (delta > 0.5 ? 'up' : (delta < -0.5 ? 'down' : 'flat'));
+    var unit = isTrace ? '万 tCO₂e' : '$/tCO₂e';
+    var srcName = isTrace ? d.source.name : d.sources.map(function (s) { return s.name; }).join(' / ');
+    var period = isTrace ? d.source.release_period + '（' + raw.period + '）' : raw.period;
+    var syncNote = isTrace ? d.source.update_frequency : d.update_frequency;
+
+    /* 多年 / 多期迷你条 */
+    var years = d.years, maxBar = 0;
+    var bars = years.map(function (y) {
+      var v = isTrace ? raw.emissions[y] : raw.prices_usd[y];
+      if (v !== null && v !== undefined && v > maxBar) maxBar = v;
+      return { y: y, v: v };
+    });
+    var barsHtml = bars.map(function (b) {
+      var w = b.v ? Math.max(4, b.v / (maxBar || 1) * 100) : 0;
+      return '<div class="detail-bar"><span>' + b.y + '</span>' +
+        '<div class="rank-bar"><i style="width:' + w + '%;background:' +
+        (b.y === state.year ? 'linear-gradient(90deg,#2f8bff,#5ad1ff)' : 'rgba(120,180,255,.3)') + '"></i></div>' +
+        '<b>' + (b.v === null || b.v === undefined ? '—' : fmt(b.v, isTrace ? 0 : 1)) + '</b></div>';
+    }).join('');
+
+    E.detailSlot.innerHTML =
+      '<div class="detail-card">' +
+      '<p class="detail-name">' + esc(row.name) + '</p>' +
+      '<p class="detail-sub">' + esc(row.sub) + '　·　' + state.year + ' 年</p>' +
+      '<div class="detail-metric"><strong>' + fmt(cur, isTrace ? 0 : 1) + '</strong><span>' + esc(unit) + '</span></div>' +
+      (isTrace ? '' : '<div class="detail-metric" style="margin-top:6px"><strong style="font-size:19px;color:#cfe6ff">' +
+        fmt(row.local, 2) + '</strong><span>' + esc(raw.currency) + '/tCO₂e　覆盖率 ' + esc(raw.coverage) + '%</span></div>') +
+      '<div class="detail-delta ' + deltaCls + '">' +
+      (delta === null ? '暂无上一年度对比数据' : '同比 ' + (delta > 0 ? '+' : '') + fmt(delta, 1) + '%（' + prevYear + ' 年 ' + fmt(prev, isTrace ? 0 : 1) + '）') +
+      '</div>' +
+      '<div class="detail-bars">' + barsHtml + '</div>' +
+      '<dl class="detail-meta">' +
+      '<div class="meta-row"><dt>数据来源</dt><dd>' + esc(srcName) + '</dd></div>' +
+      '<div class="meta-row"><dt>统计周期</dt><dd>' + esc(period) + '</dd></div>' +
+      '<div class="meta-row"><dt>发布时间</dt><dd>' + esc(raw.published_at) + '</dd></div>' +
+      '<div class="meta-row"><dt>最后同步</dt><dd>' + esc(raw.synced_at) + '</dd></div>' +
+      '<div class="meta-row"><dt>更新规则</dt><dd>' + esc(syncNote) + '</dd></div>' +
+      '<div class="meta-row"><dt>记录编号</dt><dd>' + esc(raw.id) + '　·　schema ' + esc(d.schema_version) + '</dd></div>' +
+      '</dl></div>';
+  }
+
+  /* ------------------------------ 趋势 / 价格曲线 ------------------------------ */
+  function renderTrend(rows) {
+    var isTrace = state.mode === 'trace';
+    var row = null;
+    rows.forEach(function (r) { if (r.id === state.selectedId) row = r; });
+
+    if (isTrace) {
+      E.trendTitle.textContent = row ? '该项目排放趋势' : '筛选结果年度合计排放';
+      var years = doc().years;
+      var data;
+      if (row) {
+        data = years.map(function (y) { return row.raw.emissions[y] || 0; });
+      } else {
+        data = years.map(function (y) {
+          return rows.reduce(function (s, r) { return s + (r.raw.emissions[y] || 0); }, 0);
+        });
+      }
+      setTrendOption({
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, confine: true },
+        grid: { left: 6, right: 12, top: 14, bottom: 4, containLabel: true },
+        xAxis: {
+          type: 'category', data: years,
+          axisLine: { lineStyle: { color: 'rgba(120,180,255,.3)' } },
+          axisLabel: { color: 'rgba(200,226,255,.65)', fontSize: 11 },
+          axisTick: { show: false }
+        },
+        yAxis: {
+          type: 'value', splitLine: { lineStyle: { color: 'rgba(120,180,255,.12)' } },
+          axisLabel: { color: 'rgba(200,226,255,.55)', fontSize: 10 }
+        },
+        series: [{
+          type: 'bar', barMaxWidth: 34, data: data,
+          itemStyle: {
+            borderRadius: [4, 4, 0, 0],
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: '#ff8a5c' }, { offset: 1, color: '#2f8bff' }])
+          }
+        }]
+      });
+      return;
+    }
+
+    /* 碳价格：周度价格曲线 */
+    var d = doc();
+    E.trendTitle.textContent = row ? row.name + ' · 周度价格曲线' : '筛选结果周度均价曲线';
+    var pts;
+    if (row) {
+      pts = row.raw.series[state.year] || [];
+    } else {
+      var bucket = {};
+      rows.forEach(function (r) {
+        (r.raw.series[state.year] || []).forEach(function (p) {
+          var fx = r.raw.fx_to_usd || 1;
+          if (!bucket[p.d]) bucket[p.d] = { sum: 0, n: 0 };
+          bucket[p.d].sum += p.p * fx; bucket[p.d].n++;
+        });
+      });
+      pts = Object.keys(bucket).sort().map(function (k) {
+        return { d: k, p: Math.round(bucket[k].sum / bucket[k].n * 100) / 100 };
+      });
+    }
+    if (!pts.length) {
+      setTrendOption(null);
+      return;
+    }
+    setTrendOption({
+      tooltip: {
+        trigger: 'axis', confine: true,
+        formatter: function (ps) {
+          var p = ps[0];
+          return p.axisValue + '<br/>碳价：<b>' + fmt(p.data, 1) + '</b> $/tCO₂e';
+        }
+      },
+      grid: { left: 6, right: 12, top: 14, bottom: 4, containLabel: true },
+      xAxis: {
+        type: 'category', data: pts.map(function (p) { return p.d.slice(5); }), boundaryGap: false,
+        axisLine: { lineStyle: { color: 'rgba(120,180,255,.3)' } },
+        axisLabel: { color: 'rgba(200,226,255,.65)', fontSize: 10, interval: Math.ceil(pts.length / 6) },
+        axisTick: { show: false }
+      },
+      yAxis: {
+        type: 'value', scale: true, splitLine: { lineStyle: { color: 'rgba(120,180,255,.12)' } },
+        axisLabel: { color: 'rgba(200,226,255,.55)', fontSize: 10, formatter: function (v) { return '$' + v; } }
+      },
+      series: [{
+        type: 'line', smooth: true, symbol: 'none', data: pts.map(function (p) { return p.p; }),
+        lineStyle: { width: 2.4, color: '#5ad1ff' },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(90,209,255,.42)' }, { offset: 1, color: 'rgba(47,139,255,0)' }])
+        }
+      }]
+    }, d.update_frequency);
+  }
+
+  function setTrendOption(option, note) {
+    if (!trendChart) trendChart = echarts.init(E.trendChart);
+    if (!option) {
+      if (trendChart) { trendChart.dispose(); trendChart = null; }
+      E.trendChart.innerHTML = '<div class="side-empty">该年份暂无价格序列<br/>请切换统计年份或调整筛选条件</div>';
+      return;
+    }
+    if (note) E.trendTitle.textContent += '　·　' + note;
+    trendChart.setOption(option, true);
+    trendChart.resize();
+  }
+
+  /* ------------------------------ 排行榜 ------------------------------ */
+  function renderRank(rows) {
+    var isTrace = state.mode === 'trace';
+    var sorted = rows.slice().sort(function (a, b) { return b.value - a.value; }).slice(0, 20);
+    E.rankCount.textContent = rows.length + ' 条';
+    if (!sorted.length) {
+      E.rankList.innerHTML = '<div class="side-empty">没有符合当前筛选条件的数据<br/>请调整国家、行业或搜索关键词</div>';
+      return;
+    }
+    var maxV = sorted[0].value || 1;
+    E.rankList.innerHTML = sorted.map(function (r, i) {
+      var pctW = Math.max(4, r.value / maxV * 100);
+      return '<button type="button" class="rank-item' + (r.id === state.selectedId ? ' on' : '') +
+        '" data-id="' + r.id + '">' +
+        '<span class="rank-no">' + (i + 1) + '</span>' +
+        '<span class="rank-name">' + esc(r.name) +
+        '<small>' + esc(r.sub) + '</small>' +
+        '<span class="rank-bar"><i style="width:' + pctW + '%;background:' + scaleColor(r.value, 0, maxV) + '"></i></span>' +
+        '</span>' +
+        '<span class="rank-val">' + fmt(r.value, isTrace ? 0 : 1) +
+        (isTrace ? '<small>万 tCO₂e</small>' : '<small>$/tCO₂e</small>') + '</span>' +
+        '</button>';
+    }).join('');
+  }
+
+  E.rankList.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.rank-item') : null;
+    if (!btn) return;
+    select(btn.getAttribute('data-id'), true);
+  });
+
+  /* ------------------------------ 联动：选中 ------------------------------ */
+  function select(id, fly) {
+    state.selectedId = id;
+    var rows = filtered();
+    if (fly) {
+      var target = null;
+      rows.forEach(function (r) { if (r.id === id) target = r; });
+      if (target && state.view === '3d') flyTo(target);
+      if (target && state.view === '2d') centerOn(target);
+    }
+    render(rows);
+  }
+
+  function flyTo(r) {
+    if (!chart) return;
+    var alpha = Math.max(4, Math.min(86, 90 - r.lat));
+    chart.dispatchAction({ type: 'globeChangeCamera', alpha: alpha, beta: -r.lon, distance: 120 });
+  }
+  function centerOn(r) {
+    if (!chart) return;
+    chart.setOption({ geo: { center: [r.lon, r.lat], zoom: 3.2 } });
+  }
+
+  /* ------------------------------ 渲染总入口 ------------------------------ */
+  var renderSeq = 0;
+  function render(rows) {
+    var d = doc();
+    if (!d) return;
+    rows = rows || filtered();
+    var seq = ++renderSeq;
+    renderDetail(rows);
+    renderRank(rows);
+    renderTrend(rows);
+    renderSummary(rows);
+
+    var draw = function () {
+      if (seq !== renderSeq || !chart) return;
+      try {
+        renderChart(rows);
+      } catch (err) {
+        /* 3D 渲染失败（例如 echarts-gl 未就绪）时自动降级到 2D 底图 */
+        if (state.view === '3d') {
+          state.view = '2d';
+          syncViewButtons();
+          ensureWorld().then(function () {
+            if (seq !== renderSeq || !chart) return;
+            renderChart(rows);
+          }).catch(function (e2) { loading('地图渲染失败：' + esc(err.message)); });
+        } else {
+          loading('地图渲染失败：' + esc(err.message));
+        }
+      }
+    };
+    /* 视图降级：用户选 2D，或 3D 组件不可用时，都走 2D 底图 */
+    var need2D = state.view === '2d' || !hasGlobe();
+    if (!need2D) { draw(); return; }
+    ensureWorld().then(draw).catch(function (e) {
+      if (seq !== renderSeq) return;
+      if (!hasGlobe()) {
+        loading('2D 底图与 3D 组件均不可用：' + esc(e.message));
+        return;
+      }
+      state.view = '3d';
+      syncViewButtons();
+      loading('2D 底图数据加载失败，已自动回退到 3D 地球视图。');
+      setTimeout(hideLoading, 2200);
+      draw();
+    });
+  }
+
+  function renderSummary(rows) {
+    var isTrace = state.mode === 'trace';
+    var parts = [];
+    if (state.country !== '__all__') parts.push('国家/地区：' + state.country);
+    if (isTrace && state.industry !== '__all__') parts.push('行业：' + state.industry);
+    if (!isTrace && state.mechanism !== '__all__') parts.push('机制：' + state.mechanism);
+    if (!isTrace && state.market !== '__all__') {
+      var m = null;
+      doc().markets.forEach(function (x) { if (x.id === state.market) m = x; });
+      if (m) parts.push('市场：' + m.market);
+    }
+    parts.push('年份：' + state.year);
+    parts.push(rows.length + ' 条结果');
+    E.filterSummary.innerHTML = parts.join('　·　') +
+      ' <button type="button" id="filterReset" aria-label="重置筛选">×</button>';
+    E.filterSummary.hidden = false;
+    var rb = document.getElementById('filterReset');
+    if (rb) rb.addEventListener('click', resetFilters);
+  }
+
+  function resetFilters() {
+    state.country = '__all__'; state.industry = '__all__';
+    state.market = '__all__'; state.mechanism = '__all__';
+    state.keyword = '';
+    E.globeSearch.value = '';
+    E.globeSearchClear.hidden = true;
+    buildFilters();
+    render();
+  }
+
+  /* ------------------------------ 筛选器 ------------------------------ */
+  function fillSelect(sel, values, current, allLabel) {
+    if (!sel) return;
+    var html = '<option value="__all__">' + esc(allLabel) + '</option>';
+    values.forEach(function (v) {
+      html += '<option value="' + esc(v) + '"' + (v === current ? ' selected' : '') + '>' + esc(v) + '</option>';
+    });
+    sel.innerHTML = html;
+    sel.value = current;
+  }
+  function fillSelectPairs(sel, pairs, current, allLabel) {
+    if (!sel) return;
+    var html = '<option value="__all__">' + esc(allLabel) + '</option>';
+    pairs.forEach(function (p) {
+      html += '<option value="' + esc(p[0]) + '"' + (p[0] === current ? ' selected' : '') + '>' + esc(p[1]) + '</option>';
+    });
+    sel.innerHTML = html;
+    sel.value = current;
+  }
+
+  function buildFilters() {
+    var d = doc();
+    if (!d) return;
+    var isTrace = state.mode === 'trace';
+    fillSelect(E.fCountry, d.countries, state.country, '全部国家/地区');
+    E.fIndustry.hidden = !isTrace;
+    E.fMarket.hidden = isTrace;
+    E.fMechanism.hidden = isTrace;
+    if (isTrace) {
+      fillSelect(E.fIndustry, d.industries, state.industry, '全部行业');
+    } else {
+      fillSelectPairs(E.fMarket, d.markets.map(function (m) { return [m.id, m.market]; }), state.market, '全部市场');
+      fillSelect(E.fMechanism, d.mechanisms, state.mechanism, '全部机制');
+    }
+    buildTimeline(d.years);
+  }
+
+  function buildTimeline(years) {
+    var old = E.timeline.querySelectorAll('.timeline-node');
+    Array.prototype.forEach.call(old, function (n) { n.remove(); });
+    var play = E.timelinePlay;
+    years.forEach(function (y) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'timeline-node' + (y === state.year ? ' on' : '');
+      b.setAttribute('data-year', y);
+      b.setAttribute('aria-label', y + ' 年');
+      b.innerHTML = '<span class="dot"></span><em>' + y + '</em>';
+      E.timeline.insertBefore(b, play);
+    });
+  }
+
+  function syncYear(y) {
+    state.year = y;
+    var nodes = E.timeline.querySelectorAll('.timeline-node');
+    Array.prototype.forEach.call(nodes, function (n) {
+      n.classList.toggle('on', n.getAttribute('data-year') === y);
+    });
+  }
+  function syncModeButtons() {
+    var btns = E.modeToggle.querySelectorAll('button');
+    Array.prototype.forEach.call(btns, function (b) {
+      var on = b.getAttribute('data-mode') === state.mode;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+  }
+  function syncViewButtons() {
+    var btns = E.viewToggle.querySelectorAll('button');
+    Array.prototype.forEach.call(btns, function (b) {
+      b.classList.toggle('on', b.getAttribute('data-view') === state.view);
+    });
+  }
+
+  /* ------------------------------ 模式 / 视图切换 ------------------------------ */
+  function switchMode(mode) {
+    if (mode === state.mode) return;
+    state.mode = mode;
+    state.selectedId = null;
+    syncModeButtons();
+    loading('正在加载本地 JSON 快照…');
+    loadDoc(mode).then(function (d) {
+      hideLoading();
+      if (d.years.indexOf(state.year) < 0) state.year = d.years[d.years.length - 1];
+      buildFilters();
+      render();
+    }).catch(function (e) {
+      loading('本地 JSON 快照加载失败：' + esc(e.message));
+    });
+  }
+
+  function switchView(view) {
+    if (view === state.view) return;
+    state.view = view;
+    syncViewButtons();
+    if (view === '2d') loading('正在加载 2D 底图数据…');
+    render();
+    setTimeout(hideLoading, 260);
+  }
+
+  /* ------------------------------ 打开 / 关闭 ------------------------------ */
+  function openGlobe() {
+    E.globeOverlay.classList.add('open');
+    if (!window.echarts) {
+      loading('地图组件加载失败，请确认 assets/lib/echarts.min.js 存在后刷新页面。');
+      return;
+    }
+    loading('正在加载本地 JSON 快照…');
+    loadDoc(state.mode).then(function (d) {
+      hideLoading();
+      if (!chart) {
+        chart = echarts.init(E.globeChart);
+        if (!chartBound) {
+          chart.on('click', function (params) {
+            var r = params.data && params.data.row;
+            if (r) select(r.id, false);
+          });
+          chartBound = true;
+        }
+        window.addEventListener('resize', onResize);
+      }
+      if (!state.year || d.years.indexOf(state.year) < 0) state.year = d.years[d.years.length - 1];
+      buildFilters();
+      syncModeButtons();
+      syncViewButtons();
+      render();
+    }).catch(function (e) {
+      loading('本地 JSON 快照加载失败：' + esc(e.message) +
+        '<br/>请通过本地服务器访问页面（file:// 协议下浏览器会拦截本地文件读取）。');
+    });
+  }
+
+  function closeGlobe() {
+    E.globeOverlay.classList.remove('open');
+    stopPlay();
+    if (chart) { chart.dispose(); chart = null; chartBound = false; }
+    if (trendChart) { trendChart.dispose(); trendChart = null; }
+    window.removeEventListener('resize', onResize);
+  }
+  function onResize() {
+    if (chart) chart.resize();
+    if (trendChart) trendChart.resize();
+  }
+
+  /* ------------------------------ 时间轴播放 ------------------------------ */
+  function togglePlay() {
+    state.playing = !state.playing;
+    E.timelinePlay.textContent = state.playing ? '❚❚' : '▶';
+    if (!state.playing) { stopPlay(); return; }
+    playTimer = setInterval(function () {
+      var ys = doc().years;
+      var i = ys.indexOf(state.year);
+      syncYear(ys[(i + 1) % ys.length]);
+      render();
+    }, 1900);
+  }
+  function stopPlay() {
+    if (playTimer) { clearInterval(playTimer); playTimer = null; }
+    state.playing = false;
+    E.timelinePlay.textContent = '▶';
+  }
+
+  /* ------------------------------ 事件绑定 ------------------------------ */
+  E.globeFab.addEventListener('click', openGlobe);
+  E.globeClose.addEventListener('click', closeGlobe);
+  E.globeOverlay.addEventListener('click', function (e) { if (e.target === E.globeOverlay) closeGlobe(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && E.globeOverlay.classList.contains('open')) closeGlobe();
+  });
+
+  E.modeToggle.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-mode]');
+    if (b) switchMode(b.getAttribute('data-mode'));
+  });
+  E.viewToggle.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-view]');
+    if (b) switchView(b.getAttribute('data-view'));
+  });
+  E.timeline.addEventListener('click', function (e) {
+    var b = e.target.closest('.timeline-node');
+    if (b) { syncYear(b.getAttribute('data-year')); render(); }
+  });
+  E.timelinePlay.addEventListener('click', togglePlay);
+
+  E.fCountry.addEventListener('change', function () { state.country = E.fCountry.value; render(); });
+  E.fIndustry.addEventListener('change', function () { state.industry = E.fIndustry.value; render(); });
+  E.fMarket.addEventListener('change', function () { state.market = E.fMarket.value; render(); });
+  E.fMechanism.addEventListener('change', function () { state.mechanism = E.fMechanism.value; render(); });
+
+  var searchTimer = null;
+  E.globeSearch.addEventListener('input', function () {
+    E.globeSearchClear.hidden = !E.globeSearch.value;
+    if (searchTimer) clearTimeout(searchTimer);
+    searchTimer = setTimeout(function () {
+      state.keyword = E.globeSearch.value;
+      state.selectedId = null;
+      render();
+    }, 220);
+  });
+  E.globeSearchClear.addEventListener('click', function () {
+    E.globeSearch.value = '';
+    E.globeSearchClear.hidden = true;
+    state.keyword = '';
+    render();
+  });
+})();
 </script>
 </body>
 </html>

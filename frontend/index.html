@@ -154,7 +154,7 @@
         <!-- 自然语言模式 -->
         <div v-if="calcMode==='nl'">
           <textarea v-model="nlText" rows="3"
-            placeholder="例如：我今天开车上班20公里，办公室空调开了8小时"></textarea>
+            placeholder="例如：今年上半年，我在北京开车通勤约 800 公里，办公室用电 3000 度，食堂天然气用了 200 立方米"></textarea>
           <div style="margin-top:10px">
             <button class="primary" :disabled="busy" @click="submitNl">
               {{ busy ? '核算中…' : 'AI 核算' }}

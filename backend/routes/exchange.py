@@ -17,6 +17,7 @@ from pydantic import BaseModel
 from bootstrap import repos
 from schemas.market import Order, OrderCreate, OrderSide, OrderStatus, Trade
 from schemas.users import User
+from services import price_source
 
 router = APIRouter(prefix="/api/exchange", tags=["exchange"])
 
@@ -77,6 +78,22 @@ def orderbook():
 def list_trades():
     trades = repos.trades.list()
     return sorted(trades, key=lambda t: t.created_at, reverse=True)
+
+
+@router.get("/prices")
+def carbon_prices(market: Optional[str] = None):
+    """全球碳价行情。
+
+    - 不带 market：返回市场概要列表（供下拉选择与行情卡）。
+    - 带 market=xxx：返回单个市场完整行情（含近 30 日走势 series）。
+    - 数据源：默认本地 JSON（演示），配置 CARBON_PRICE_API_URL 后走外部平台。
+    """
+    if market:
+        m = price_source.get_market(market)
+        if not m:
+            raise HTTPException(404, f"未找到碳市场：{market}")
+        return m
+    return price_source.list_markets()
 
 
 @router.post("/orders", response_model=Order)

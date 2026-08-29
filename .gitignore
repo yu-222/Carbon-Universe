@@ -25,3 +25,6 @@ Thumbs.db
 
 # 运行时数据（启动时由 seed 自动生成）
 backend/data/
+
+# process logs
+*.err
